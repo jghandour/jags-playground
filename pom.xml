@@ -1,0 +1,621 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <prerequisites>
+        <maven>3.3.9</maven>
+    </prerequisites>
+
+    <groupId>com.jagsits</groupId>
+    <artifactId>playground</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>Playground</name>
+    <description>Playground for learning various technologies.</description>
+    <inceptionYear>2015</inceptionYear>
+    <organization>
+        <name>JAG&apos;s Information Technology Services Inc.</name>
+        <url>http://www.jagsits.com</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>James</id>
+            <name>James Ghandour</name>
+            <email>james@jagsits.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <!-- Versioning -->
+        <!-- https://issues.apache.org/jira/browse/MRESOURCES-99 -->
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+        <build.timestamp>${maven.build.timestamp}</build.timestamp>
+        <build.version>${project.version}</build.version>
+
+        <!-- Testing -->
+        <skip.tests.unit>false</skip.tests.unit>
+        <skip.tests.integration>false</skip.tests.integration>
+
+        <!-- Sonar / Jacoco -->
+        <sonar.language>java</sonar.language>
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.junit.reportsPath>${project.build.directory}/surefire-reports</sonar.junit.reportsPath>
+        <sonar.jacoco.reportPath>${project.build.directory}/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.jacoco.itReportPath>${project.build.directory}/jacoco-it.exec</sonar.jacoco.itReportPath>
+
+        <!-- Plugin Versions -->
+        <version.plugin.clean>3.0.0</version.plugin.clean>
+        <version.plugin.compiler>3.5.1</version.plugin.compiler>
+        <version.plugin.deploy>2.8.2</version.plugin.deploy>
+        <version.plugin.failsafe>2.19.1</version.plugin.failsafe>
+        <version.plugin.frontend>0.0.29</version.plugin.frontend>
+        <version.plugin.install>2.5.2</version.plugin.install>
+        <version.plugin.jacoco>0.7.6.201602180812</version.plugin.jacoco>
+        <version.plugin.jdeps>3.0.0</version.plugin.jdeps>
+        <version.plugin.jetty>9.3.8.RC0</version.plugin.jetty>
+        <version.plugin.resources>2.7</version.plugin.resources>
+        <version.plugin.site>3.5</version.plugin.site>
+        <version.plugin.sonar>3.0.1</version.plugin.sonar>
+        <version.plugin.surefire>2.19.1</version.plugin.surefire>
+        <version.plugin.war>2.6</version.plugin.war>
+
+        <!-- Dependency Versions -->
+        <version.commons-collections4>4.1</version.commons-collections4>
+        <version.commons-lang3>3.4</version.commons-lang3>
+        <version.commons-logging>1.2</version.commons-logging>
+        <version.commons-math3>3.6</version.commons-math3>
+        <version.jackson>2.7.2</version.jackson>
+        <version.jacoco.listeners>3.11</version.jacoco.listeners>
+        <version.javax-servlet>3.1.0</version.javax-servlet>
+        <version.javax-validation>1.1.0.Final</version.javax-validation>
+        <version.junit>4.12</version.junit>
+        <version.logback>1.1.6</version.logback>
+        <version.slf4j>1.7.18</version.slf4j>
+        <version.spring>4.2.5.RELEASE</version.spring>
+        <version.spring-security>4.0.4.RELEASE</version.spring-security>
+    </properties>
+
+    <dependencies>
+        <!-- Javax -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${version.javax-servlet}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${version.javax-validation}</version>
+        </dependency>
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${version.spring}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${version.spring}</version>
+        </dependency>
+
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${version.spring-security}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${version.spring-security}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${version.spring-security}</version>
+        </dependency>
+
+        <!-- Apache Commons -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${version.commons-collections4}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${version.commons-lang3}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>${version.commons-math3}</version>
+        </dependency>
+
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${version.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${version.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${version.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
+            <version>${version.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-parameter-names</artifactId>
+            <version>${version.jackson}</version>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${version.slf4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${version.slf4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${version.logback}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${version.logback}</version>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${version.junit}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${version.spring}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>${version.spring-security}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.sonarsource.java</groupId>
+            <artifactId>sonar-jacoco-listeners</artifactId>
+            <version>${version.jacoco.listeners}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>ROOT</finalName>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${version.plugin.clean}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${version.plugin.deploy}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${version.plugin.install}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${version.plugin.resources}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${version.plugin.site}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${version.plugin.compiler}</version>
+                    <configuration>
+                        <compilerArgs>
+                            <compilerArg>-parameters</compilerArg>
+                        </compilerArgs>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${version.plugin.surefire}</version>
+                    <configuration>
+                        <skipTests>${skip.tests.unit}</skipTests>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${version.plugin.failsafe}</version>
+                    <configuration>
+                        <skipTests>${skip.tests.integration}</skipTests>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>${version.plugin.jetty}</version>
+                    <configuration>
+                        <scanIntervalSeconds>10</scanIntervalSeconds>
+                        <useTestScope>true</useTestScope>
+                        <webAppConfig>
+                            <defaultsDescriptor>src/test/resources/jetty-maven-plugin-webdefault.xml
+                            </defaultsDescriptor>
+                        </webAppConfig>
+                        <stopKey>stopJetty!</stopKey>
+                        <stopPort>8081</stopPort>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${version.plugin.jacoco}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${version.plugin.sonar}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${version.plugin.war}</version>
+                    <configuration>
+                        <archiveClasses>true</archiveClasses>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jdeps-plugin</artifactId>
+                    <version>${version.plugin.jdeps}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>jdkinternals</goal>
+                                <goal>test-jdkinternals</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>${version.plugin.frontend}</version>
+                <configuration>
+                    <workingDirectory>src/main</workingDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install-node-and-npm</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v5.7.0</nodeVersion>
+                            <npmVersion>3.8.0</npmVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm-install</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <!-- mvn com.github.eirslett:frontend-maven-plugin:gulp@gulp-ncu -->
+                    <execution>
+                        <id>gulp-ncu</id>
+                        <phase>none</phase>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>ncu</arguments>
+                        </configuration>
+                    </execution>
+                    <!-- mvn com.github.eirslett:frontend-maven-plugin:gulp@gulp-clean -->
+                    <execution>
+                        <id>gulp-clean</id>
+                        <phase>none</phase>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>clean</arguments>
+                        </configuration>
+                    </execution>
+                    <!-- mvn com.github.eirslett:frontend-maven-plugin:gulp@gulp-build -->
+                    <execution>
+                        <id>gulp-build</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                    </execution>
+                    <!-- mvn com.github.eirslett:frontend-maven-plugin:gulp@gulp-watch -->
+                    <execution>
+                        <id>gulp-watch</id>
+                        <phase>none</phase>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>watch</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+    <profiles>
+        <!--
+         To run sonar with coverage reports:
+         mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage
+         mvn sonar:sonar
+        -->
+        <profile>
+            <id>coverage</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${version.plugin.jacoco}</version>
+                        <executions>
+                            <execution>
+                                <id>prepare-agent-ut</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                                <configuration>
+                                    <destFile>${sonar.jacoco.reportPath}</destFile>
+                                    <append>true</append>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>prepare-agent-it</id>
+                                <goals>
+                                    <goal>prepare-agent-integration</goal>
+                                </goals>
+                                <configuration>
+                                    <destFile>${sonar.jacoco.itReportPath}</destFile>
+                                    <append>true</append>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <testFailureIgnore>true</testFailureIgnore>
+                            <properties>
+                                <property>
+                                    <name>listener</name>
+                                    <value>org.sonar.java.jacoco.JUnitListener</value>
+                                </property>
+                            </properties>
+                            <reportsDirectory>${sonar.junit.reportsPath}</reportsDirectory>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <configuration>
+                            <testFailureIgnore>true</testFailureIgnore>
+                            <properties>
+                                <property>
+                                    <name>listener</name>
+                                    <value>org.sonar.java.jacoco.JUnitListener</value>
+                                </property>
+                            </properties>
+                            <!--
+                            To see IT failure details on Sonar, merge reports with junit surefire output.
+                            Minor issue is that the integration test failures on sonar are recognized as unit test failures.
+                            -->
+                            <reportsDirectory>${sonar.junit.reportsPath}</reportsDirectory>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${version.plugin.jacoco}</version>
+                        <reportSets>
+                            <reportSet>
+                                <id>default-report</id>
+                                <reports>
+                                    <report>report</report>
+                                </reports>
+                                <configuration>
+                                    <dataFile>${sonar.jacoco.reportPath}</dataFile>
+                                </configuration>
+                            </reportSet>
+                            <reportSet>
+                                <id>default-report-integration</id>
+                                <reports>
+                                    <report>report-integration</report>
+                                </reports>
+                                <configuration>
+                                    <dataFile>${sonar.jacoco.itReportPath}</dataFile>
+                                </configuration>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                </plugins>
+            </reporting>
+        </profile>
+        <profile>
+            <id>functional</id>
+            <properties>
+                <skip.tests.unit>true</skip.tests.unit>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <configuration>
+                            <testFailureIgnore>true</testFailureIgnore>
+                            <excludes>
+                                <exclude>**/*IT*.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*FT*.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>start-jetty</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>start</goal>
+                                </goals>
+                                <configuration>
+                                    <scanIntervalSeconds>0</scanIntervalSeconds>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>stop-jetty</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

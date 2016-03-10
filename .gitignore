@@ -1,0 +1,20 @@
+# Maven
+target
+
+# IntelliJ
+.idea
+*.iml
+
+# Sonar
+.sonar
+.sonar_lock
+
+# Frontend
+/src/main/node
+/src/main/node_modules
+/src/main/webapp/**/*.html
+/src/main/webapp/**/*.css
+/src/main/webapp/**/*.js
+/src/main/webapp/**/*.map
+/src/main/webapp/**/*.manifest
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" manifest="app.manifest">
+
+<head>
+    <meta charset="utf-8">
+    <title>JAG&#39;s Playground</title>
+
+    <link rel="stylesheet" href="lib.css">
+    <link rel="stylesheet" href="app.css"/>
+    <script type="text/javascript" src="lib.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body data-ng-strict-di data-ng-app="jagsPlaygroundApp" data-ng-controller="AppCtrl">
+
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">JAG's</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#sudoku">Sudoku</a></li>
+                </ul>
+                <!--
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+                -->
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Main Body -->
+<div class="container" data-ng-view></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="text-muted">Copyright... Version: {{$root.version.version}}, Timestamp: {{$root.version.timestamp}}
+    </div>
+</footer>
+
+</body>
+
+</html>

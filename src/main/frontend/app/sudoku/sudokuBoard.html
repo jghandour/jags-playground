@@ -1,0 +1,9 @@
+<button type="button" class="btn btn-default btn-sm" data-ng-click="isCollapsed = !isCollapsed" data-ng-init="isCollapsed = true" data-ng-animate="'animate'">Show Board</button>
+<div data-uib-collapse="isCollapsed">
+    <div data-ng-repeat="r in [0,1,2,3,4,5,6,7,8]" class="row">
+        <div data-ng-repeat="c in [0,1,2,3,4,5,6,7,8]" class="col-xs-1">
+            <input type="text" value="{{board.charAt((r * 9) + c)}}" size="2" disabled>
+        </div>
+    </div>
+</div>
+

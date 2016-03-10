@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd
+            http://www.springframework.org/schema/security
+            http://www.springframework.org/schema/security/spring-security.xsd
+            http://www.springframework.org/schema/util
+            http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <context:component-scan base-package="com.jagsits.web"/>
+
+    <mvc:resources mapping="/**" location="/" cache-period="0"/>
+    <mvc:view-controller path="/" view-name="redirect:/index.html"/>
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="false">
+            <ref bean="jacksonHttpConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <bean id="jacksonHttpConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"
+          p:objectMapper-ref="jagsObjectMapper"/>
+
+    <!--
+    <security:global-method-security pre-post-annotations="enabled"/>
+    -->
+
+</beans>
