@@ -60,6 +60,7 @@
         <version.plugin.deploy>2.8.2</version.plugin.deploy>
         <version.plugin.failsafe>2.19.1</version.plugin.failsafe>
         <version.plugin.frontend>0.0.29</version.plugin.frontend>
+        <version.plugin.javadoc>2.10.3</version.plugin.javadoc>
         <version.plugin.install>2.5.2</version.plugin.install>
         <version.plugin.jacoco>0.7.6.201602180812</version.plugin.jacoco>
         <version.plugin.jdeps>3.0.0</version.plugin.jdeps>
@@ -282,6 +283,12 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>${version.plugin.deploy}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${version.plugin.javadoc}</version>
                 </plugin>
 
                 <plugin>
