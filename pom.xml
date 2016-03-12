@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <prerequisites>
@@ -30,7 +29,8 @@
         <connection>scm:git:ssh://git@bitbucket.org/jamesghandour/playground.git</connection>
         <developerConnection>scm:git:ssh://git@bitbucket.org/jamesghandour/playground.git</developerConnection>
         <url>https://bitbucket.org/jamesghandour/playground.git</url>
-    </scm>
+        <tag>HEAD</tag>
+  </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -408,8 +408,8 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                            <nodeVersion>v5.7.0</nodeVersion>
-                            <npmVersion>3.8.0</npmVersion>
+                            <nodeVersion>v5.8.0</nodeVersion>
+                            <npmVersion>3.8.2</npmVersion>
                         </configuration>
                     </execution>
                     <execution>
