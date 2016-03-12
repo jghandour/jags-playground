@@ -27,6 +27,7 @@
     </developers>
 
     <scm>
+        <connection>scm:git:ssh://bitbucket.org:jamesghandour/playground.git</connection>
         <developerConnection>scm:git:ssh://bitbucket.org:jamesghandour/playground.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
