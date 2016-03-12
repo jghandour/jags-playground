@@ -19,12 +19,14 @@ public final class SudokuUtils {
 
     /**
      * Generates a random solved Sudoku Board
-     * <p/>
+     *
      * Approach:
      * Generate a puzzle using 9 symbols.
      * Randomly assign symbol to a value of 1-9
      * Randomly transpose the grid
      * Randomly shuffle rows / cols / row groups / col groups
+     *
+     * @return a randomly generated sudoku board
      */
     public static SudokuBoard generateRandomSolvedSudokuBoard() {
         int[][] cells = generateRandomSolvedBoard();
