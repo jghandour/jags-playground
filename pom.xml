@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <prerequisites>
@@ -8,7 +9,7 @@
     <groupId>com.jagsits</groupId>
     <artifactId>playground</artifactId>
     <packaging>war</packaging>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.3-SNAPSHOT</version>
 
     <name>Playground</name>
     <description>Playground for learning various technologies.</description>
@@ -30,7 +31,14 @@
         <developerConnection>scm:git:ssh://git@bitbucket.org/jamesghandour/playground.git</developerConnection>
         <url>https://bitbucket.org/jamesghandour/playground.git</url>
         <tag>HEAD</tag>
-  </scm>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>my-repo</id>
+            <url>file:///cygdrive/c/code/maven-repo/</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
