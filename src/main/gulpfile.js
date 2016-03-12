@@ -42,11 +42,11 @@ var destination_files = [
 ];
 
 // Functions
-function merge_js (sourcePaths, bundleName) {
+function mergeJs (sourcePaths, bundleName) {
     return gulp.src(sourcePaths).pipe(sourcemaps.init()).pipe(concat(bundleName)).pipe(uglify()).pipe(sourcemaps.write("maps")).pipe(gulp.dest(path_destination));
 }
 
-function merge_css (sourcePaths, bundleName) {
+function mergeCss (sourcePaths, bundleName) {
     return gulp.src(sourcePaths).pipe(sourcemaps.init()).pipe(concat(bundleName)).pipe(uglifycss()).pipe(sourcemaps.write("maps")).pipe(gulp.dest(path_destination));
 }
 
@@ -70,13 +70,13 @@ gulp.task("manifest", function () {
 });
 
 gulp.task("lib", function () {
-    merge_js(src_bundle_lib_js, "lib.js");
-    merge_css(src_bundle_lib_css, "lib.css");
+    mergeJs(src_bundle_lib_js, "lib.js");
+    mergeCss(src_bundle_lib_css, "lib.css");
 });
 
 gulp.task("app", function () {
-    merge_js(src_bundle_app_js, "app.js");
-    merge_css(src_bundle_app_css, "app.css");
+    mergeJs(src_bundle_app_js, "app.js");
+    mergeCss(src_bundle_app_css, "app.css");
 });
 
 gulp.task("clean", function() {
@@ -92,7 +92,7 @@ gulp.task("watch", function() {
 gulp.task("ncu", function() {
     ncu.run({
         packageFile: "package.json"
-    }).then(function(upgraded) {
-        console.log("Dependencies to upgrade:", upgraded);
+    }).then(function(upgradeable) {
+        console.log("Dependencies to upgrade:", upgradeable);
     });
 });
