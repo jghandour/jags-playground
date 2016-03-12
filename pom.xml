@@ -69,6 +69,7 @@
         <version.plugin.resources>2.7</version.plugin.resources>
         <version.plugin.site>3.5</version.plugin.site>
         <version.plugin.sonar>3.0.1</version.plugin.sonar>
+        <version.plugin.source>3.0.0</version.plugin.source>
         <version.plugin.surefire>2.19.1</version.plugin.surefire>
         <version.plugin.war>2.6</version.plugin.war>
 
@@ -289,6 +290,12 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${version.plugin.javadoc}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${version.plugin.source}</version>
                 </plugin>
 
                 <plugin>
