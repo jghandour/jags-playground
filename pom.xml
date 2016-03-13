@@ -8,7 +8,7 @@
     <groupId>com.jagsits</groupId>
     <artifactId>playground</artifactId>
     <packaging>war</packaging>
-    <version>1.4-SNAPSHOT</version>
+    <version>1.5-SNAPSHOT</version>
 
     <name>Playground</name>
     <description>Playground for learning various technologies.</description>
