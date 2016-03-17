@@ -8,7 +8,7 @@
     <groupId>com.jagsits</groupId>
     <artifactId>playground</artifactId>
     <packaging>war</packaging>
-    <version>1.6-SNAPSHOT</version>
+    <version>1.7-SNAPSHOT</version>
 
     <name>Playground</name>
     <description>Playground for learning various technologies.</description>
@@ -71,7 +71,7 @@
         <version.plugin.install>2.5.2</version.plugin.install>
         <version.plugin.jacoco>0.7.6.201602180812</version.plugin.jacoco>
         <version.plugin.jdeps>3.0.0</version.plugin.jdeps>
-        <version.plugin.jetty>9.3.8.RC0</version.plugin.jetty>
+        <version.plugin.jetty>9.3.8.v20160314</version.plugin.jetty>
         <version.plugin.release>2.5.3</version.plugin.release>
         <version.plugin.resources>2.7</version.plugin.resources>
         <version.plugin.site>3.5</version.plugin.site>
@@ -85,13 +85,13 @@
         <version.commons-lang3>3.4</version.commons-lang3>
         <version.commons-logging>1.2</version.commons-logging>
         <version.commons-math3>3.6</version.commons-math3>
-        <version.jackson>2.7.2</version.jackson>
+        <version.jackson>2.7.3</version.jackson>
         <version.jacoco.listeners>3.11</version.jacoco.listeners>
         <version.javax-servlet>3.1.0</version.javax-servlet>
         <version.javax-validation>1.1.0.Final</version.javax-validation>
         <version.junit>4.12</version.junit>
         <version.logback>1.1.6</version.logback>
-        <version.slf4j>1.7.18</version.slf4j>
+        <version.slf4j>1.7.19</version.slf4j>
         <version.spring>4.2.5.RELEASE</version.spring>
         <version.spring-security>4.0.4.RELEASE</version.spring-security>
     </properties>

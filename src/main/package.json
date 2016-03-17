@@ -16,10 +16,10 @@
     "npm-check-updates": "^2.5.8"
   },
   "dependencies": {
-    "angular": "^1.5.0",
-    "angular-animate": "^1.5.0",
-    "angular-route": "^1.5.0",
-    "angular-loading-bar": "^0.8.0",
+    "angular": "^1.5.1",
+    "angular-animate": "^1.5.1",
+    "angular-route": "^1.5.1",
+    "angular-loading-bar": "^0.9.0",
     "angular-ui-bootstrap": "^1.2.4",
     "jquery": "^2.2.1",
     "bootstrap": "^3.3.6"
