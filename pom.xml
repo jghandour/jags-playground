@@ -84,9 +84,9 @@
         <version.commons-collections4>4.1</version.commons-collections4>
         <version.commons-lang3>3.4</version.commons-lang3>
         <version.commons-logging>1.2</version.commons-logging>
-        <version.commons-math3>3.6</version.commons-math3>
+        <version.commons-math3>3.6.1</version.commons-math3>
         <version.jackson>2.7.3</version.jackson>
-        <version.jacoco.listeners>3.11</version.jacoco.listeners>
+        <version.jacoco.listeners>3.12</version.jacoco.listeners>
         <version.javax-servlet>3.1.0</version.javax-servlet>
         <version.javax-validation>1.1.0.Final</version.javax-validation>
         <version.junit>4.12</version.junit>
