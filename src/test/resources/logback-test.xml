@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration debug="true">
 
+    <jmxConfigurator/>
+
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>target/logs/playground.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">

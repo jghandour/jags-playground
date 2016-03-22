@@ -69,5 +69,10 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <!-- Logback Listener -->
+    <listener>
+        <listener-class>com.jagsits.web.LogbackContextListener</listener-class>
+    </listener>
 </web-app>
 
