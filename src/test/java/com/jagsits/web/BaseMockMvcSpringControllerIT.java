@@ -1,7 +1,6 @@
 package com.jagsits.web;
 
 import com.jagsits.BaseSpringIT;
-import com.jagsits.util.CharsetUtils;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,6 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.Filter;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +28,7 @@ import static org.junit.Assert.assertEquals;
 public abstract class BaseMockMvcSpringControllerIT extends BaseSpringIT {
 
     private static final String EXPECTED_CONTENT_TYPE = "application/json;charset=UTF-8";
-    private static final String EXPECTED_CHARACTER_ENCODING = CharsetUtils.UTF_8;
+    private static final String EXPECTED_CHARACTER_ENCODING = StandardCharsets.UTF_8.name();
 
     @Autowired
     private WebApplicationContext wac;
