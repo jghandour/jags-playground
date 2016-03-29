@@ -81,6 +81,7 @@
         <version.plugin.war>2.6</version.plugin.war>
 
         <!-- Dependency Versions -->
+        <version.commons-codec>1.10</version.commons-codec>
         <version.commons-collections4>4.1</version.commons-collections4>
         <version.commons-lang3>3.4</version.commons-lang3>
         <version.commons-logging>1.2</version.commons-logging>
@@ -91,7 +92,7 @@
         <version.javax-validation>1.1.0.Final</version.javax-validation>
         <version.junit>4.12</version.junit>
         <version.logback>1.1.6</version.logback>
-        <version.slf4j>1.7.19</version.slf4j>
+        <version.slf4j>1.7.20</version.slf4j>
         <version.spring>4.2.5.RELEASE</version.spring>
         <version.spring-security>4.0.4.RELEASE</version.spring-security>
     </properties>
@@ -170,6 +171,11 @@
         </dependency>
 
         <!-- Apache Commons -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${version.commons-codec}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
