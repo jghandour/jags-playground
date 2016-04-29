@@ -66,7 +66,7 @@
         <version.plugin.compiler>3.5.1</version.plugin.compiler>
         <version.plugin.deploy>2.8.2</version.plugin.deploy>
         <version.plugin.failsafe>2.19.1</version.plugin.failsafe>
-        <version.plugin.frontend>0.0.29</version.plugin.frontend>
+        <version.plugin.frontend>1.0</version.plugin.frontend>
         <version.plugin.javadoc>2.10.3</version.plugin.javadoc>
         <version.plugin.install>2.5.2</version.plugin.install>
         <version.plugin.jacoco>0.7.6.201602180812</version.plugin.jacoco>
@@ -74,8 +74,8 @@
         <version.plugin.jetty>9.3.8.v20160314</version.plugin.jetty>
         <version.plugin.release>2.5.3</version.plugin.release>
         <version.plugin.resources>2.7</version.plugin.resources>
-        <version.plugin.site>3.5</version.plugin.site>
-        <version.plugin.sonar>3.0.1</version.plugin.sonar>
+        <version.plugin.site>3.5.1</version.plugin.site>
+        <version.plugin.sonar>3.0.2</version.plugin.sonar>
         <version.plugin.source>3.0.0</version.plugin.source>
         <version.plugin.surefire>2.19.1</version.plugin.surefire>
         <version.plugin.war>2.6</version.plugin.war>
@@ -87,7 +87,7 @@
         <version.commons-logging>1.2</version.commons-logging>
         <version.commons-math3>3.6.1</version.commons-math3>
         <version.jackson>2.7.3</version.jackson>
-        <version.jacoco.listeners>3.12</version.jacoco.listeners>
+        <version.jacoco.listeners>3.13.1</version.jacoco.listeners>
         <version.javax-servlet>3.1.0</version.javax-servlet>
         <version.javax-validation>1.1.0.Final</version.javax-validation>
         <version.junit>4.12</version.junit>
