@@ -71,7 +71,7 @@
         <version.plugin.install>2.5.2</version.plugin.install>
         <version.plugin.jacoco>0.7.6.201602180812</version.plugin.jacoco>
         <version.plugin.jdeps>3.0.0</version.plugin.jdeps>
-        <version.plugin.jetty>9.3.9.M1</version.plugin.jetty>
+        <version.plugin.jetty>9.3.9.v20160517</version.plugin.jetty>
         <version.plugin.release>2.5.3</version.plugin.release>
         <version.plugin.resources>2.7</version.plugin.resources>
         <version.plugin.site>3.5.1</version.plugin.site>
