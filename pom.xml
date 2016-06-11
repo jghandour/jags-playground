@@ -67,7 +67,7 @@
         <version.plugin.deploy>2.8.2</version.plugin.deploy>
         <version.plugin.failsafe>2.19.1</version.plugin.failsafe>
         <version.plugin.frontend>1.0</version.plugin.frontend>
-        <version.plugin.javadoc>2.10.3</version.plugin.javadoc>
+        <version.plugin.javadoc>2.10.4</version.plugin.javadoc>
         <version.plugin.install>2.5.2</version.plugin.install>
         <version.plugin.jacoco>0.7.7.201606060606</version.plugin.jacoco>
         <version.plugin.jdeps>3.0.0</version.plugin.jdeps>
