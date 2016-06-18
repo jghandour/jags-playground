@@ -72,7 +72,7 @@
 
     <!-- Logback Listener -->
     <listener>
-        <listener-class>com.jagsits.web.LogbackContextListener</listener-class>
+        <listener-class>com.jagsits.web.LogbackServletContextListener</listener-class>
     </listener>
 </web-app>
 

@@ -7,16 +7,18 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-public class LogbackContextListener implements ServletContextListener {
+public class LogbackServletContextListener implements ServletContextListener {
 
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
+    @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        log.info("Stopping Logger Context to enure there are no memory leaks.");
+        log.info("Stopping Logger Context to ensure there are no memory leaks.");
         LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
         lc.stop();
     }
 
+    @Override
     public void contextInitialized(ServletContextEvent sce) {
     }
 } 
