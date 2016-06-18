@@ -5,6 +5,7 @@ import com.jagsits.service.sudoku.SudokuBoard;
 /**
  * Based on https://github.com/attractivechaos/plb/tree/master/sudoku
  *
+ * Original Documentation:
  * For Sudoku, there are 9x9x9=729 possible choices (9 numbers to choose for
  * each cell in a 9x9 grid), and 4x9x9=324 constraints with each constraint
  * representing a set of choices that are mutually conflictive with each other.
@@ -49,7 +50,7 @@ import com.jagsits.service.sudoku.SudokuBoard;
  * complex to implement as we have to keep the counts synchronized all the time,
  * but it is 50-100% faster, depending on the input.
  */
-public class KudokuSudokuSolver implements SudokuSolver {
+class KudokuSudokuSolver implements SudokuSolver {
 
     private static int[][] R;
     private static int[][] C;

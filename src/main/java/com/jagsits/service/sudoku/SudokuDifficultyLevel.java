@@ -7,7 +7,7 @@ public enum SudokuDifficultyLevel {
     EXTREMELY_EASY(35),
     MEDIUM(45),
     DIFFICULT(55),
-    EVIL(60); // Ideally we can get this higher
+    EVIL(60); // TODO: Ideally we can get this higher
 
     public static final Comparator<SudokuDifficultyLevel> MISSING_CELLS_COMPARATOR = new CaseInsensitiveComparator();
 

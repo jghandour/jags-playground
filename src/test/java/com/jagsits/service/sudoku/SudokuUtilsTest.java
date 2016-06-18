@@ -26,6 +26,7 @@ public class SudokuUtilsTest {
 
     @Test
     public void testIsSolved() {
+        assertFalse(SudokuUtils.isSolved(null));
         assertFalse(SudokuUtils.isSolved(new SudokuBoard(SudokuBoardTest.BOARD_STRING_UNSOLVED)));
         assertTrue(SudokuUtils.isSolved(new SudokuBoard(SudokuBoardTest.BOARD_STRING_SOLVED)));
         assertFalse(SudokuUtils.isSolved(new SudokuBoard("174385962293467158586192734451923876928674315367851249719548623635219487842736592")));

@@ -3,8 +3,6 @@ package com.jagsits.service.sudoku.solver;
 import com.jagsits.service.sudoku.SudokuBoard;
 import com.jagsits.service.sudoku.SudokuCell;
 import com.jagsits.service.sudoku.SudokuUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -13,9 +11,7 @@ import java.util.List;
 /**
  * Loosely based on http://en.wikipedia.org/wiki/Sudoku_solving_algorithms#Brute-force_algorithm
  */
-public class BruteForceSudokuSolver implements SudokuSolver {
-
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
+class BruteForceSudokuSolver implements SudokuSolver {
 
     @Override
     public SudokuSolverAlgorithm getAlgorithm() {
@@ -51,7 +47,7 @@ public class BruteForceSudokuSolver implements SudokuSolver {
         return result;
     }
 
-    public boolean populateCell(SudokuBoard board, List<SudokuCell> cellsToSolve, int index) {
+    private boolean populateCell(SudokuBoard board, List<SudokuCell> cellsToSolve, int index) {
         if (SudokuUtils.isSolved(board)) {
             return true;
         }

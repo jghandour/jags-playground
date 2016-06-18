@@ -4,7 +4,7 @@ import com.jagsits.service.sudoku.SudokuBoard;
 import com.jagsits.service.sudoku.SudokuCell;
 import com.jagsits.service.sudoku.SudokuUtils;
 
-public class BackTrackingSudokuSolver implements SudokuSolver {
+class BackTrackingSudokuSolver implements SudokuSolver {
 
     @Override
     public SudokuSolverAlgorithm getAlgorithm() {
@@ -13,7 +13,7 @@ public class BackTrackingSudokuSolver implements SudokuSolver {
 
     @Override
     public SudokuBoard solve(SudokuBoard board) {
-        solveCell(board, new SudokuCell(0, 0));
+        boolean solved = solveCell(board, new SudokuCell(0, 0));
         // FIXME handle solved = false
         return board;
     }

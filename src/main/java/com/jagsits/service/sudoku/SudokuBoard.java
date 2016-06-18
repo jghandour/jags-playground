@@ -129,8 +129,8 @@ public class SudokuBoard {
         return new HashCodeBuilder(17, 37).append(cells).toHashCode();
     }
 
-    @Override
     @JsonValue
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int r = 0; r < BOARD_DIMENSION; r++) {

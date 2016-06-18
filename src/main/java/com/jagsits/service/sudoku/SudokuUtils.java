@@ -56,7 +56,7 @@ public final class SudokuUtils {
         // Shuffle rows & cols around
         for (int i = 0; i < count; i++) {
 
-            // Transpose the array (switch rows to cols and cols to rows)
+            // Transpose the array
             if (random.nextBoolean()) {
                 JagsUtils.transpose(cells);
             }
@@ -90,7 +90,7 @@ public final class SudokuUtils {
     }
 
     public static SudokuDifficultyLevel getDifficultyLevel(SudokuBoard sudokuBoard) {
-        SudokuDifficultyLevel levels[] = SudokuDifficultyLevel.values();
+        SudokuDifficultyLevel[] levels = SudokuDifficultyLevel.values();
         Arrays.sort(levels, SudokuDifficultyLevel.MISSING_CELLS_COMPARATOR);
 
         int missingCells = sudokuBoard.getUnpopulatedCells().size();
@@ -122,7 +122,7 @@ public final class SudokuUtils {
     public static boolean isValidValue(SudokuBoard board, SudokuCell cell, int value) {
 
         if (board.isPopulated(cell)) {
-            throw new RuntimeException("Cannot call for SudokuCell which already has a value");
+            throw new RuntimeException("Cannot call for SudokuCell which already has a value.");
         }
 
         // Check Row
@@ -191,6 +191,9 @@ public final class SudokuUtils {
     }
 
     public static boolean isSolved(SudokuBoard board) {
+        if (board == null) {
+            return false;
+        }
         // Check Rows & Columns
         for (int r = 0; r < BOARD_DIMENSION; r++) {
             boolean[] rowValues = new boolean[BOARD_DIMENSION];

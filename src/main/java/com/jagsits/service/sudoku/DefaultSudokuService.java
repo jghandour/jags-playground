@@ -113,12 +113,7 @@ public class DefaultSudokuService extends BaseService implements SudokuService {
             // Create a worker for every potential algorithm
             List<Callable<SudokuResponse>> workers = new LinkedList<>();
             for (SudokuSolverAlgorithm algorithm : SudokuSolverAlgorithm.values()) {
-                workers.add(
-                        new CallableSudokuSolver(
-                                SudokuSolverFactory.createSudokuSolver(algorithm),
-                                new SudokuBoard(board),
-                                level)
-                );
+                workers.add(new CallableSudokuSolver(SudokuSolverFactory.createSudokuSolver(algorithm), new SudokuBoard(board), level));
             }
 
             // Run the executors
@@ -129,8 +124,6 @@ public class DefaultSudokuService extends BaseService implements SudokuService {
 
     private SudokuResponse solve(List<Callable<SudokuResponse>> workers) {
         SudokuResponse result = null;
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
 
         // Submit each of the workers to the executor
         int count = workers.size();
@@ -146,17 +139,16 @@ public class DefaultSudokuService extends BaseService implements SudokuService {
                     Future<SudokuResponse> future = ecs.take(); // Blocking
                     SudokuResponse sudokuResult = future.get();
                     // Just because we have something on the queue, doesn't mean it is an actual solution
-                    if (sudokuResult != null && sudokuResult.getSudokuBoard() != null && SudokuUtils.isSolved(sudokuResult.getSudokuBoard())) {
+                    if (sudokuResult != null && SudokuUtils.isSolved(sudokuResult.getSudokuBoard())) {
                         result = sudokuResult;
-                        stopWatch.stop();
                         break;
                     }
                 } catch (ExecutionException e) {
-                    log.debug("ExecutionException...", e);
+                    log.debug("ExecutionException.", e);
                 }
             }
         } catch (InterruptedException e) {
-            log.debug("InterruptedException...", e);
+            log.warn("InterruptedException.", e);
         } finally {
             for (Future<SudokuResponse> f : futures) {
                 f.cancel(true);
