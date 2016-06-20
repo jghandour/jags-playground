@@ -28,4 +28,8 @@ public final class SudokuSolverFactory {
         return result;
     }
 
+    public static NumberOfSolutionsSudokuSolver createNumberOfSolutionsSudokuSolver() {
+        return new KnuthSudokuSolver();
+    }
+
 }

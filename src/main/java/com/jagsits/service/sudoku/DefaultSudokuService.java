@@ -18,13 +18,12 @@ import java.util.concurrent.*;
 @ManagedResource
 public class DefaultSudokuService extends BaseService implements SudokuService {
 
-    // TODO: Find a better way to implement this!
+    private NumberOfSolutionsSudokuSolver numberOfSolutionsSudokuSolver = SudokuSolverFactory.createNumberOfSolutionsSudokuSolver();
+
     @Override
     public SudokuBoard createBoard(SudokuDifficultyLevel difficultyLevel) {
-        KnuthSudokuSolver knuthSudokuSolver = new KnuthSudokuSolver();
-
         // Remove random values ensuring the result is always a board with only one solution
-        int maxAttempts = 100;
+        int maxAttempts = 1_000;
         while (true) {
             SudokuBoard result = SudokuUtils.generateRandomSolvedSudokuBoard();
             int attempts = 0;
@@ -37,8 +36,7 @@ public class DefaultSudokuService extends BaseService implements SudokuService {
                     int cellValue = result.getCellValue(cell);
                     result.clearValue(cell);
                     missingCells++;
-
-                    if (knuthSudokuSolver.getNumberOfPossibleSolutions(result) == 1) {
+                    if (numberOfSolutionsSudokuSolver.getNumberOfPossibleSolutions(result) == 1) {
                         attempts = 0;
                         if (missingCells == difficultyLevel.getMissingCellCount()) {
                             return result;

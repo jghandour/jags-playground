@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * Adapted from the Hadoop samples for Sudoku solutions to use my abstraction of a SudokuBoard
  */
-public class KnuthSudokuSolver implements SudokuSolver {
+class KnuthSudokuSolver implements SudokuSolver, NumberOfSolutionsSudokuSolver {
 
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
     public SudokuSolverAlgorithm getAlgorithm() {
@@ -30,6 +30,7 @@ public class KnuthSudokuSolver implements SudokuSolver {
         return new SudokuBoard(solutionAcceptor.getSolution());
     }
 
+    @Override
     public int getNumberOfPossibleSolutions(SudokuBoard sudokuBoard) {
         DancingLinks<ColumnName> model = makeModel(sudokuBoard);
         KnuthSolutionAcceptor solutionAcceptor = new KnuthSolutionAcceptor();
