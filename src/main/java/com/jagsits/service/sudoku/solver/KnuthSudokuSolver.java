@@ -31,7 +31,7 @@ class KnuthSudokuSolver implements SudokuSolver, NumberOfSolutionsSudokuSolver {
     }
 
     @Override
-    public int getNumberOfPossibleSolutions(SudokuBoard sudokuBoard) {
+    public int getNumberOfSolutions(SudokuBoard sudokuBoard) {
         DancingLinks<ColumnName> model = makeModel(sudokuBoard);
         KnuthSolutionAcceptor solutionAcceptor = new KnuthSolutionAcceptor();
         return model.solve(solutionAcceptor);
