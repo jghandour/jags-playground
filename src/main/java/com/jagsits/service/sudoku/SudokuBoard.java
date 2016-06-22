@@ -85,6 +85,10 @@ public class SudokuBoard {
         cells[r][c] = DEFAULT_VALUE;
     }
 
+    public void setCellValue(SudokuCellValue value) {
+        setCellValue(value.getSudokuCell(), value.getValue());
+    }
+
     public void setCellValue(SudokuCell cell, int value) {
         setCellValue(cell.getR(), cell.getC(), value);
     }
@@ -99,6 +103,12 @@ public class SudokuBoard {
 
     public List<SudokuCell> getPopulatedCells() {
         return getAllCells().stream().filter(this::isPopulated).collect(Collectors.toList());
+    }
+
+    public List<SudokuCellValue> getAllCellsValues() {
+        List<SudokuCellValue> result = new ArrayList<>(BOARD_CELL_COUNT);
+        result.addAll(getAllCells().stream().map(cell -> new SudokuCellValue(cell, getCellValue(cell))).collect(Collectors.toList()));
+        return result;
     }
 
     public List<SudokuCell> getAllCells() {

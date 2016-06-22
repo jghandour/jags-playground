@@ -138,8 +138,8 @@ public class SudokuServiceIT extends BaseSpringIT {
     @Test
     public void testBoardGeneration() {
         for (SudokuDifficultyLevel level : SudokuDifficultyLevel.values()) {
-            SudokuBoard board = service.createBoard(level);
             log.debug("Starting Board Generation for SudokuDifficultyLevel: {}.", level);
+            SudokuBoard board = service.createBoard(level);
             assertEquals(level.getMissingCellCount(), board.getUnpopulatedCells().size());
             service.solve(board);
         }

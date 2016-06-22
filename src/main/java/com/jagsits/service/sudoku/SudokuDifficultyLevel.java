@@ -3,15 +3,15 @@ package com.jagsits.service.sudoku;
 import java.util.Comparator;
 
 public enum SudokuDifficultyLevel {
-    EASY(40),
     EXTREMELY_EASY(35),
+    EASY(40),
     MEDIUM(45),
     DIFFICULT(55),
-    EVIL(60); // TODO: Ideally we can get this higher
+    EVIL(60);
 
     public static final Comparator<SudokuDifficultyLevel> MISSING_CELLS_COMPARATOR = new CaseInsensitiveComparator();
 
-    private int missingCellCount;
+    private final int missingCellCount;
 
     SudokuDifficultyLevel(int missingCellCount) {
         this.missingCellCount = missingCellCount;

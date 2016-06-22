@@ -22,33 +22,40 @@ public class DefaultSudokuService extends BaseService implements SudokuService {
 
     @Override
     public SudokuBoard createBoard(SudokuDifficultyLevel difficultyLevel) {
-        // Remove random values ensuring the result is always a board with only one solution
-        int maxAttempts = 1_000;
-        while (true) {
-            SudokuBoard result = SudokuUtils.generateRandomSolvedSudokuBoard();
-            int attempts = 0;
-            int missingCells = 0;
+        SudokuBoard result;
+
+        LinkedList<SudokuCellValue> cellsRemoved;
+        LinkedList<SudokuCellValue> cellValuesRemovable;
+
+        long attempts = 0;
+        do {
+            log.trace("Attempting to generate a new random board for level: {}, attempt: {}.", difficultyLevel, attempts++);
+            result = SudokuUtils.generateRandomSolvedSudokuBoard();
+
+            cellsRemoved = new LinkedList<>();
+            cellValuesRemovable = new LinkedList<>(result.getAllCellsValues());
+            Collections.shuffle(cellValuesRemovable);
 
             do {
-                List<SudokuCell> populatedCells = result.getPopulatedCells();
-                Collections.shuffle(populatedCells);
-                for (SudokuCell cell : populatedCells) {
-                    int cellValue = result.getCellValue(cell);
-                    result.clearValue(cell);
-                    missingCells++;
-                    if (numberOfSolutionsSudokuSolver.getNumberOfPossibleSolutions(result) == 1) {
-                        attempts = 0;
-                        if (missingCells == difficultyLevel.getMissingCellCount()) {
-                            return result;
-                        }
+                if (cellValuesRemovable.size() < difficultyLevel.getMissingCellCount() - cellsRemoved.size()) {
+                    // Need to start from the beginning, there is not enough left that is removable
+                    break;
+                }
+
+                for (int i = 0; i < cellValuesRemovable.size(); i++) {
+                    SudokuCellValue cellValue = cellValuesRemovable.remove(i);
+                    result.clearValue(cellValue.getSudokuCell());
+                    int numSolutions = numberOfSolutionsSudokuSolver.getNumberOfSolutions(result);
+                    if (numSolutions == 1) {
+                        cellsRemoved.push(cellValue);
+                        break;
                     } else {
-                        missingCells--;
-                        result.setCellValue(cell, cellValue);
-                        attempts++;
+                        result.setCellValue(cellValue);
                     }
                 }
-            } while (attempts < maxAttempts);
-        }
+            } while (cellsRemoved.size() != difficultyLevel.getMissingCellCount());
+        } while (cellsRemoved.size() != difficultyLevel.getMissingCellCount());
+        return result;
     }
 
     @ManagedOperation
