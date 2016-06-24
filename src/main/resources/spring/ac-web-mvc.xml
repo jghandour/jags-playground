@@ -23,6 +23,7 @@
     <mvc:default-servlet-handler/>
 
     <mvc:view-controller path="/" view-name="redirect:/index.html"/>
+
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="false">
             <ref bean="jacksonHttpConverter"/>
