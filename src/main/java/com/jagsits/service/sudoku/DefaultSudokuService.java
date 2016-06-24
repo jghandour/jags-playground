@@ -38,7 +38,7 @@ public class DefaultSudokuService extends BaseService implements SudokuService {
 
             do {
                 if (cellValuesRemovable.size() < difficultyLevel.getMissingCellCount() - cellsRemoved.size()) {
-                    // Need to start from the beginning, there is not enough left that is removable
+                    // Need to start from the beginning, there is not enough left that are removable
                     break;
                 }
 

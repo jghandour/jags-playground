@@ -25,7 +25,7 @@ class KnuthSudokuSolver implements SudokuSolver, NumberOfSolutionsSudokuSolver {
         KnuthSolutionAcceptor solutionAcceptor = new KnuthSolutionAcceptor();
         int results = model.solve(solutionAcceptor);
         if (results > 1) {
-            log.warn("HAS MORE THAN ONE SOLUTION!");
+            log.warn("Has more than one solution!");
         }
         return new SudokuBoard(solutionAcceptor.getSolution());
     }
