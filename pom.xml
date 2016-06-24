@@ -76,7 +76,7 @@
         <version.plugin.resources>3.0.1</version.plugin.resources>
         <version.plugin.site>3.5.1</version.plugin.site>
         <version.plugin.sonar>3.0.2</version.plugin.sonar>
-        <version.plugin.source>3.0.0</version.plugin.source>
+        <version.plugin.source>3.0.1</version.plugin.source>
         <version.plugin.surefire>2.19.1</version.plugin.surefire>
         <version.plugin.war>2.6</version.plugin.war>
 
