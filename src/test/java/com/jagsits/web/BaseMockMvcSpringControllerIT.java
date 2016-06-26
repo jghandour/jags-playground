@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.mock.http.client.MockClientHttpResponse;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
@@ -31,9 +31,9 @@ public abstract class BaseMockMvcSpringControllerIT extends BaseSpringIT {
     private static final String EXPECTED_CHARACTER_ENCODING = StandardCharsets.UTF_8.name();
 
     @Autowired
-    private WebApplicationContext wac;
+    private WebApplicationContext webApplicationContext;
     @Autowired
-    private MappingJackson2HttpMessageConverter httpMessageConverter;
+    private HttpMessageConverter httpMessageConverter;
     @Autowired
     @Qualifier("springSecurityFilterChain")
     private Filter springSecurityFilterChain;
@@ -42,7 +42,7 @@ public abstract class BaseMockMvcSpringControllerIT extends BaseSpringIT {
 
     @Before
     public void setup() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).addFilter(springSecurityFilterChain, "/").build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).addFilter(springSecurityFilterChain, "/").build();
     }
 
     protected List getResultList(MvcResult mvcResult) {
