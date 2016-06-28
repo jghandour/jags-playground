@@ -83,7 +83,7 @@ public abstract class BaseMockMvcSpringControllerIT extends BaseSpringIT {
         validateMvcResult(mvcResult);
         Map result = null;
         try {
-            // TODO: Is there a cleaner way of doing this?
+            // TODO: Is there a cleaner way of doing this? Why doesn't get auto-magically converted by spring?
             HttpInputMessage inputMessage = new MockClientHttpResponse(mvcResult.getResponse().getContentAsByteArray(), HttpStatus.valueOf(mvcResult.getResponse().getStatus()));
             result = (Map) httpMessageConverter.read(Map.class, inputMessage);
             if (validate) {
