@@ -1,13 +1,11 @@
 package com.jagsits.web;
 
 import com.jagsits.BaseSpringIT;
+import com.jagsits.util.JsonUtils;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.mock.http.client.MockClientHttpResponse;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -32,8 +30,6 @@ public abstract class BaseMockMvcSpringControllerIT extends BaseSpringIT {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
-    @Autowired
-    private HttpMessageConverter httpMessageConverter;
     @Autowired
     @Qualifier("springSecurityFilterChain")
     private Filter springSecurityFilterChain;
@@ -83,9 +79,7 @@ public abstract class BaseMockMvcSpringControllerIT extends BaseSpringIT {
         validateMvcResult(mvcResult);
         Map result = null;
         try {
-            // TODO: Is there a cleaner way of doing this? Why doesn't get auto-magically converted by spring?
-            HttpInputMessage inputMessage = new MockClientHttpResponse(mvcResult.getResponse().getContentAsByteArray(), HttpStatus.valueOf(mvcResult.getResponse().getStatus()));
-            result = (Map) httpMessageConverter.read(Map.class, inputMessage);
+            result = JsonUtils.fromJson(mvcResult.getResponse().getContentAsByteArray(), Map.class);
             if (validate) {
                 assertEquals(HttpStatus.OK.value(), result.get(BaseController.RESPONSE_STATUS));
             }
