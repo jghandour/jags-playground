@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 mvn clean package
-scp target/ROOT.war root@159.203.28.31:/tmp
+scp target/ROOT.war root@playground.jagsits.com:/tmp
