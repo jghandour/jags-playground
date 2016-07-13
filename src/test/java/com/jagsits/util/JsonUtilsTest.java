@@ -8,17 +8,16 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class JsonUtilsTest {
+    private static final String LINE_SEPARATOR = System.lineSeparator();
 
     @Test
     public void testToJson() {
-        Map<String,Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put("KEY_1", "VALUE_1");
         map.put("KEY_2", null);
-
-        String jsonString = CharsetUtils.toUTF8(JsonUtils.toJson(map));
-        assertEquals("{\r\n" +
-                "  \"KEY_1\" : \"VALUE_1\"\r\n" +
-                "}", jsonString);
+        String actualJson = CharsetUtils.toUTF8(JsonUtils.toJson(map));
+        StringBuilder expected = new StringBuilder().append("{").append(LINE_SEPARATOR).append("  \"KEY_1\" : \"VALUE_1\"").append(LINE_SEPARATOR).append("}");
+        assertEquals(expected.toString(), actualJson);
     }
 
     @Test
