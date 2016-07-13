@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jghandour/jags-playground.svg?branch=master)](https://travis-ci.org/jghandour/jags-playground)
+
 # JAG's Playground
 Playground for learning various technologies.
 
