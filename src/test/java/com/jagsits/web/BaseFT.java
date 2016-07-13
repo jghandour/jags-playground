@@ -1,12 +1,11 @@
 package com.jagsits.web;
 
 import com.jagsits.util.JagsObjectMapper;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +20,7 @@ public abstract class BaseFT {
 
     public BaseFT() {
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter(new JagsObjectMapper());
-        restTemplate = new RestTemplate(Arrays.asList(new HttpMessageConverter[]{converter}));
+        restTemplate = new RestTemplate(Collections.singletonList(converter));
     }
 
     protected List getResultList(Map map) {
