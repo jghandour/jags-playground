@@ -64,6 +64,7 @@
         <!-- Plugin Versions -->
         <version.plugin.clean>3.0.0</version.plugin.clean>
         <version.plugin.compiler>3.5.1</version.plugin.compiler>
+        <version.plugin.dependency-check>1.4.0</version.plugin.dependency-check>
         <version.plugin.deploy>2.8.2</version.plugin.deploy>
         <version.plugin.failsafe>2.19.1</version.plugin.failsafe>
         <version.plugin.frontend>1.0</version.plugin.frontend>
@@ -423,6 +424,20 @@
                         </execution>
                     </executions>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.owasp</groupId>
+                    <artifactId>dependency-check-maven</artifactId>
+                    <version>${version.plugin.dependency-check}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
             </plugins>
         </pluginManagement>
 
