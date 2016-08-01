@@ -64,7 +64,7 @@
         <!-- Plugin Versions -->
         <version.plugin.clean>3.0.0</version.plugin.clean>
         <version.plugin.compiler>3.5.1</version.plugin.compiler>
-        <version.plugin.dependency-check>1.4.0</version.plugin.dependency-check>
+        <version.plugin.dependency-check>1.4.2</version.plugin.dependency-check>
         <version.plugin.deploy>2.8.2</version.plugin.deploy>
         <version.plugin.failsafe>2.19.1</version.plugin.failsafe>
         <version.plugin.frontend>1.0</version.plugin.frontend>
@@ -94,7 +94,7 @@
         <version.junit>4.12</version.junit>
         <version.logback>1.1.7</version.logback>
         <version.slf4j>1.7.21</version.slf4j>
-        <version.spring>4.3.1.RELEASE</version.spring>
+        <version.spring>4.3.2.RELEASE</version.spring>
         <version.spring-security>4.1.1.RELEASE</version.spring-security>
     </properties>
 
