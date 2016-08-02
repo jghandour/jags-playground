@@ -72,7 +72,7 @@
         <version.plugin.install>2.5.2</version.plugin.install>
         <version.plugin.jacoco>0.7.7.201606060606</version.plugin.jacoco>
         <version.plugin.jdeps>3.0.0</version.plugin.jdeps>
-        <version.plugin.jetty>9.3.9.v20160517</version.plugin.jetty>
+        <version.plugin.jetty>9.3.11.v20160721</version.plugin.jetty>
         <version.plugin.release>2.5.3</version.plugin.release>
         <version.plugin.resources>3.0.1</version.plugin.resources>
         <version.plugin.site>3.5.1</version.plugin.site>
@@ -457,7 +457,9 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                            <nodeVersion>v6.3.0</nodeVersion>
+                            <!-- https://nodejs.org/dist/ -->
+                            <nodeVersion>v6.3.1</nodeVersion>
+                            <!-- https://registry.npmjs.org/npm/ -->
                             <npmVersion>3.10.5</npmVersion>
                         </configuration>
                     </execution>
