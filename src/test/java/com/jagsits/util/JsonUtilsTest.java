@@ -5,7 +5,8 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class JsonUtilsTest {
     private static final String LINE_SEPARATOR = System.lineSeparator();
