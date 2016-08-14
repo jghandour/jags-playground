@@ -1,13 +1,15 @@
 package com.jagsits.web;
 
 import com.jagsits.BaseSpringIT;
+import com.jagsits.PlaygroundWebMvcConfiguration;
 import com.jagsits.util.JsonUtils;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.ContextHierarchy;
+import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -22,10 +24,10 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 @WebAppConfiguration
-@ContextHierarchy({@ContextConfiguration("classpath:spring/ac-web-mvc.xml")})
+@ContextConfiguration(classes = {PlaygroundWebMvcConfiguration.class}, loader = AnnotationConfigWebContextLoader.class)
 public abstract class BaseMockMvcSpringControllerIT extends BaseSpringIT {
 
-    private static final String EXPECTED_CONTENT_TYPE = "application/json;charset=UTF-8";
+    private static final String EXPECTED_CONTENT_TYPE = MediaType.APPLICATION_JSON_UTF8_VALUE;
     private static final String EXPECTED_CHARACTER_ENCODING = StandardCharsets.UTF_8.name();
 
     @Autowired
@@ -38,7 +40,7 @@ public abstract class BaseMockMvcSpringControllerIT extends BaseSpringIT {
 
     @Before
     public void setup() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).addFilter(springSecurityFilterChain, "/").build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).addFilter(springSecurityFilterChain, "/").build();
     }
 
     protected List getResultList(MvcResult mvcResult) {

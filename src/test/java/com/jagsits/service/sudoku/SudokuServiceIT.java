@@ -6,12 +6,14 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
+@WebAppConfiguration
 public class SudokuServiceIT extends BaseSpringIT {
 
     @Autowired

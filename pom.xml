@@ -408,6 +408,7 @@
                     <version>${version.plugin.war}</version>
                     <configuration>
                         <archiveClasses>true</archiveClasses>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
 
