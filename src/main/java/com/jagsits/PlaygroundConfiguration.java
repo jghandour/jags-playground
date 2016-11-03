@@ -32,7 +32,7 @@ public class PlaygroundConfiguration {
 
     @Bean
     public PlaceholderConfigurerSupport propertyConfigurer() throws IOException {
-        Resource[] resourceLocations = new Resource[]{
+        Resource[] resourceLocations = {
                 new ClassPathResource("build.properties"),
         };
 
