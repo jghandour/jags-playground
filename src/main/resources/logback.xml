@@ -3,15 +3,15 @@
 
     <jmxConfigurator/>
 
-    <appender name="ASYNC-FILE" class="ch.qos.logback.classic.AsyncAppender">
-        <appender-ref ref="FILE"/>
-    </appender>
-
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>${jetty.base}/logs/playground.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>%date{ISO8601} [%thread] %-5level %logger{35} - %msg %n</pattern>
         </encoder>
+    </appender>
+
+    <appender name="ASYNC-FILE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE"/>
     </appender>
 
     <logger name="com.jagsits" level="DEBUG"/>
