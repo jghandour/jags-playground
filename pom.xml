@@ -63,11 +63,11 @@
 
         <!-- Plugin Versions -->
         <version.plugin.clean>3.0.0</version.plugin.clean>
-        <version.plugin.compiler>3.5.1</version.plugin.compiler>
+        <version.plugin.compiler>3.6.0</version.plugin.compiler>
         <version.plugin.dependency-check>1.4.3</version.plugin.dependency-check>
         <version.plugin.deploy>2.8.2</version.plugin.deploy>
         <version.plugin.failsafe>2.19.1</version.plugin.failsafe>
-        <version.plugin.frontend>1.0</version.plugin.frontend>
+        <version.plugin.frontend>1.2</version.plugin.frontend>
         <version.plugin.javadoc>2.10.4</version.plugin.javadoc>
         <version.plugin.install>2.5.2</version.plugin.install>
         <version.plugin.jacoco>0.7.7.201606060606</version.plugin.jacoco>
@@ -84,11 +84,11 @@
         <!-- Dependency Versions -->
         <version.commons-codec>1.10</version.commons-codec>
         <version.commons-collections4>4.1</version.commons-collections4>
-        <version.commons-lang3>3.4</version.commons-lang3>
+        <version.commons-lang3>3.5</version.commons-lang3>
         <version.commons-logging>1.2</version.commons-logging>
         <version.commons-math3>3.6.1</version.commons-math3>
-        <version.jackson>2.8.3</version.jackson>
-        <version.jacoco.listeners>4.2</version.jacoco.listeners>
+        <version.jackson>2.8.4</version.jackson>
+        <version.jacoco.listeners>4.2.1.6971</version.jacoco.listeners>
         <version.javax-servlet>3.1.0</version.javax-servlet>
         <version.javax-validation>1.1.0.Final</version.javax-validation>
         <version.junit>4.12</version.junit>
@@ -459,9 +459,9 @@
                         </goals>
                         <configuration>
                             <!-- https://nodejs.org/dist/ -->
-                            <nodeVersion>v6.3.1</nodeVersion>
+                            <nodeVersion>v6.9.1</nodeVersion>
                             <!-- https://registry.npmjs.org/npm/ -->
-                            <npmVersion>3.10.5</npmVersion>
+                            <npmVersion>3.10.9</npmVersion>
                         </configuration>
                     </execution>
                     <execution>

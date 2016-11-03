@@ -12,15 +12,15 @@
     "gulp-concat": "^2.6.0",
     "gulp-uglify": "^2.0.0",
     "gulp-uglifycss": "^1.0.6",
-    "gulp-sourcemaps": "^1.6.0",
-    "npm-check-updates": "^2.8.2"
+    "gulp-sourcemaps": "^2.2.0",
+    "npm-check-updates": "^2.8.6"
   },
   "dependencies": {
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
     "angular-route": "^1.5.8",
     "angular-loading-bar": "^0.9.0",
-    "angular-ui-bootstrap": "^2.1.4",
+    "angular-ui-bootstrap": "^2.2.0",
     "jquery": "^2.2.4",
     "bootstrap": "^3.3.7"
   },
