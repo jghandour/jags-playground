@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-public class MockMvcSudokuControllerIT extends BaseMockMvcSpringControllerIT {
+public class MockMvcSudokuControllerTest extends BaseMockMvcSpringControllerTest {
 
     @Test
     public void testSolve() throws Exception {

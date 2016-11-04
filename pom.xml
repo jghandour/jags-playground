@@ -334,30 +334,16 @@
                         <skipTests>${skip.tests.unit}</skipTests>
                     </configuration>
                 </plugin>
-
-                <!--
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${version.plugin.failsafe}</version>
-                    <configuration>
-                        <skipTests>${skip.tests.integration}</skipTests>
-                    </configuration>
-                </plugin>
-                -->
-
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>${version.plugin.jacoco}</version>
                 </plugin>
-
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
                     <version>${version.plugin.sonar}</version>
                 </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
@@ -594,29 +580,6 @@
                     </plugin>
                 </plugins>
             </reporting>
-        </profile>
-        <profile>
-            <id>functional</id>
-            <properties>
-                <skip.tests.unit>true</skip.tests.unit>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <configuration>
-                            <testFailureIgnore>true</testFailureIgnore>
-                            <excludes>
-                                <exclude>**/*IT*.java</exclude>
-                            </excludes>
-                            <includes>
-                                <include>**/*FT*.java</include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
     </profiles>
 

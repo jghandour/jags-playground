@@ -9,6 +9,6 @@ import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PlaygroundConfiguration.class}, loader = AnnotationConfigWebContextLoader.class)
-public abstract class BaseSpringIT {
+public abstract class BaseSpringTest {
     protected final Logger log = LoggerFactory.getLogger(getClass());
 }

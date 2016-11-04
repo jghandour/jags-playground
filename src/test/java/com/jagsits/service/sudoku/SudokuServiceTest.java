@@ -1,6 +1,6 @@
 package com.jagsits.service.sudoku;
 
-import com.jagsits.BaseSpringIT;
+import com.jagsits.BaseSpringTest;
 import com.jagsits.service.sudoku.solver.SudokuSolverAlgorithm;
 import org.apache.commons.lang3.time.StopWatch;
 import org.junit.BeforeClass;
@@ -14,7 +14,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 @WebAppConfiguration
-public class SudokuServiceIT extends BaseSpringIT {
+public class SudokuServiceTest extends BaseSpringTest {
 
     @Autowired
     private DefaultSudokuService service;

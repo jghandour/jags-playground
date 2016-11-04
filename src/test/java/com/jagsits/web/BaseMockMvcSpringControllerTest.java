@@ -1,6 +1,6 @@
 package com.jagsits.web;
 
-import com.jagsits.BaseSpringIT;
+import com.jagsits.BaseSpringTest;
 import com.jagsits.PlaygroundWebMvcConfiguration;
 import com.jagsits.util.JsonUtils;
 import org.junit.Before;
@@ -25,7 +25,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {PlaygroundWebMvcConfiguration.class})
-public abstract class BaseMockMvcSpringControllerIT extends BaseSpringIT {
+public abstract class BaseMockMvcSpringControllerTest extends BaseSpringTest {
 
     private static final String EXPECTED_CONTENT_TYPE = MediaType.APPLICATION_JSON_UTF8_VALUE;
     private static final String EXPECTED_CHARACTER_ENCODING = StandardCharsets.UTF_8.name();

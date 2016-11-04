@@ -9,7 +9,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-public class MockMvcMainControllerIT extends BaseMockMvcSpringControllerIT {
+public class MockMvcMainControllerTest extends BaseMockMvcSpringControllerTest {
 
     @Test
     public void testVersion() throws Exception {

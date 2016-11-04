@@ -1,27 +1,25 @@
 package com.jagsits.web;
 
-import com.jagsits.util.JagsObjectMapper;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
+import com.jagsits.util.JagsUtils;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.StringUtils;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-public abstract class BaseFT {
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public abstract class BaseIT {
 
-    private static final String HOST = "localhost";
-    private static final int PORT = 8080;
-
-    private RestTemplate restTemplate;
-
-    public BaseFT() {
-        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter(new JagsObjectMapper());
-        restTemplate = new RestTemplate(Collections.singletonList(converter));
-    }
+    @Autowired
+    private TestRestTemplate restTemplate;
 
     protected List getResultList(Map map) {
         return getResultList(map, true);
@@ -60,26 +58,24 @@ public abstract class BaseFT {
     }
 
     protected Map doGet(String path) {
-        return restTemplate.getForObject(buildUrlString(path), Map.class);
+        return restTemplate.getForObject(path, Map.class);
     }
 
     protected Map doGet(String path, Map<String, ?> params) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(buildUrlString(path));
+        UriComponentsBuilder builder = UriComponentsBuilder.fromPath(path);
         for (Map.Entry<String, ?> entry : params.entrySet()) {
             builder = builder.queryParam(entry.getKey(), entry.getValue());
         }
-        return restTemplate.getForObject(builder.build().encode().toUri(), Map.class);
-    }
-
-    private String buildUrlString(String path) {
-        return String.format("http://%s:%s/%s", HOST, PORT, path);
+        return restTemplate.getForObject(builder.build().encode().toString(), Map.class);
     }
 
     protected String buildPathSuffix(String... pathVariables) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder result = new StringBuilder();
         for (String pathVariable : pathVariables) {
-            sb.append("/").append(pathVariable);
+            pathVariable = StringUtils.trimLeadingCharacter(pathVariable, JagsUtils.URL_SEPARATOR);
+            pathVariable = StringUtils.trimTrailingCharacter(pathVariable, JagsUtils.URL_SEPARATOR);
+            result.append(JagsUtils.URL_SEPARATOR).append(pathVariable);
         }
-        return sb.toString();
+        return result.toString();
     }
 }

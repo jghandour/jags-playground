@@ -9,6 +9,7 @@ public final class JagsUtils {
 
     public static final String LINE_SEPARATOR = System.lineSeparator();
     public static final String DEFAULT_CHAR_VALUE = "\0";
+    public static final char URL_SEPARATOR = '/';
 
     private JagsUtils() {
     }
