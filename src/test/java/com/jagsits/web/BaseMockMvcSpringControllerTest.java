@@ -4,13 +4,11 @@ import com.jagsits.BaseSpringTest;
 import com.jagsits.PlaygroundWebMvcConfiguration;
 import com.jagsits.util.JsonUtils;
 import org.junit.Before;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -23,8 +21,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {PlaygroundWebMvcConfiguration.class})
+@ContextConfiguration(classes = {PlaygroundWebMvcConfiguration.class})
 public abstract class BaseMockMvcSpringControllerTest extends BaseSpringTest {
 
     private static final String EXPECTED_CONTENT_TYPE = MediaType.APPLICATION_JSON_UTF8_VALUE;

@@ -6,6 +6,7 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 @WebAppConfiguration
+@EnableAutoConfiguration
 public class SudokuServiceTest extends BaseSpringTest {
 
     @Autowired

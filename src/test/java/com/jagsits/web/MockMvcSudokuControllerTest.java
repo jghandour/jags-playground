@@ -3,6 +3,8 @@ package com.jagsits.web;
 import com.jagsits.service.sudoku.SudokuBoardTest;
 import com.jagsits.service.sudoku.solver.SudokuSolverAlgorithm;
 import org.junit.Test;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.List;
@@ -12,6 +14,8 @@ import static org.junit.Assert.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
+@WebAppConfiguration
+@EnableAutoConfiguration
 public class MockMvcSudokuControllerTest extends BaseMockMvcSpringControllerTest {
 
     @Test
