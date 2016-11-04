@@ -7,8 +7,8 @@ Playground for learning various technologies.
 
 ## Running
 ```
-# Run Jetty
-mvn clean jetty:run -o
+# Run Application
+mvn clean spring-boot:run
 ```
 
 ## Testing
