@@ -29,7 +29,7 @@
         <developer>
             <id>James</id>
             <name>James Ghandour</name>
-            <email>james@jagsits.com</email>
+            <email>james at jagsits.com</email>
         </developer>
     </developers>
 
@@ -59,20 +59,12 @@
         <sonar.jacoco.reportPath>${project.build.directory}/jacoco.exec</sonar.jacoco.reportPath>
         <sonar.jacoco.itReportPath>${project.build.directory}/jacoco-it.exec</sonar.jacoco.itReportPath>
 
-        <!-- Plugin Versions -->
-        <version.plugin.dependency-check>1.4.3</version.plugin.dependency-check>
-        <version.plugin.frontend>1.2</version.plugin.frontend>
-        <version.plugin.jacoco>0.7.7.201606060606</version.plugin.jacoco>
-        <version.plugin.jdeps>3.0.0</version.plugin.jdeps>
-        <version.plugin.sonar>3.2</version.plugin.sonar>
-
         <!-- Dependency Versions -->
-        <version.commons-collections4>4.1</version.commons-collections4>
-        <version.commons-lang3>3.5</version.commons-lang3>
-        <version.commons-logging>1.2</version.commons-logging>
-        <version.commons-math3>3.6.1</version.commons-math3>
-        <version.jacoco.listeners>4.2.1.6971</version.jacoco.listeners>
-        <version.javax-validation>1.1.0.Final</version.javax-validation>
+        <commons-collections4.version>4.1</commons-collections4.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <jacoco.listeners.version>4.2.1.6971</jacoco.listeners.version>
+        <javax-validation.version>1.1.0.Final</javax-validation.version>
     </properties>
 
     <dependencies>
@@ -84,7 +76,7 @@
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>${version.javax-validation}</version>
+            <version>${javax-validation.version}</version>
         </dependency>
 
         <!-- Spring -->
@@ -128,17 +120,17 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>${version.commons-collections4}</version>
+            <version>${commons-collections4.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${version.commons-lang3}</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
-            <version>${version.commons-math3}</version>
+            <version>${commons-math3.version}</version>
         </dependency>
 
         <!-- Jackson -->
@@ -195,28 +187,13 @@
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>sonar-jacoco-listeners</artifactId>
-            <version>${version.jacoco.listeners}</version>
+            <version>${jacoco.listeners.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <finalName>ROOT</finalName>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-
-        <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-                <filtering>true</filtering>
-            </testResource>
-        </testResources>
-
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -244,25 +221,17 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>${version.plugin.jacoco}</version>
+                    <version>0.7.7.201606060606</version>
                 </plugin>
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
-                    <version>${version.plugin.sonar}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <configuration>
-                        <archiveClasses>true</archiveClasses>
-                        <failOnMissingWebXml>false</failOnMissingWebXml>
-                    </configuration>
+                    <version>3.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jdeps-plugin</artifactId>
-                    <version>${version.plugin.jdeps}</version>
+                    <version>3.0.0</version>
                     <executions>
                         <execution>
                             <goals>
@@ -275,7 +244,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>${version.plugin.dependency-check}</version>
+                    <version>1.4.3</version>
                     <executions>
                         <execution>
                             <goals>
@@ -283,6 +252,11 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>1.2</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -306,7 +280,6 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>${version.plugin.frontend}</version>
                 <configuration>
                     <workingDirectory>src/main</workingDirectory>
                 </configuration>
@@ -393,7 +366,6 @@
                     <plugin>
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>${version.plugin.jacoco}</version>
                         <executions>
                             <execution>
                                 <id>prepare-agent-ut</id>
@@ -456,7 +428,6 @@
                     <plugin>
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>${version.plugin.jacoco}</version>
                         <reportSets>
                             <reportSet>
                                 <id>default-report</id>
