@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <prerequisites>
@@ -7,8 +8,15 @@
 
     <groupId>com.jagsits</groupId>
     <artifactId>playground</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <version>1.7-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.1.RELEASE</version>
+        <relativePath/>
+    </parent>
 
     <name>Playground</name>
     <description>Playground for learning various technologies.</description>
@@ -47,8 +55,8 @@
         <!-- Versioning -->
         <!-- https://issues.apache.org/jira/browse/MRESOURCES-99 -->
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
-        <build.timestamp>${maven.build.timestamp}</build.timestamp>
-        <build.version>${project.version}</build.version>
+        <mvn.build.timestamp>${maven.build.timestamp}</mvn.build.timestamp>
+        <mvn.build.version>${project.version}</mvn.build.version>
 
         <!-- Testing -->
         <skip.tests.unit>false</skip.tests.unit>
@@ -72,7 +80,6 @@
         <version.plugin.install>2.5.2</version.plugin.install>
         <version.plugin.jacoco>0.7.7.201606060606</version.plugin.jacoco>
         <version.plugin.jdeps>3.0.0</version.plugin.jdeps>
-        <version.plugin.jetty>9.3.11.v20160721</version.plugin.jetty>
         <version.plugin.release>2.5.3</version.plugin.release>
         <version.plugin.resources>3.0.1</version.plugin.resources>
         <version.plugin.site>3.5.1</version.plugin.site>
@@ -113,62 +120,25 @@
 
         <!-- Spring -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${version.spring}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${version.spring}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${version.spring}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-            <version>${version.spring}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${version.spring}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${version.spring}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${version.spring}</version>
-        </dependency>
-
-        <!-- Spring Security -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>${version.spring-security}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${version.spring-security}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${version.spring-security}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
 
         <!-- Apache Commons -->
@@ -365,6 +335,7 @@
                     </configuration>
                 </plugin>
 
+                <!--
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
@@ -373,22 +344,7 @@
                         <skipTests>${skip.tests.integration}</skipTests>
                     </configuration>
                 </plugin>
-
-                <plugin>
-                    <groupId>org.eclipse.jetty</groupId>
-                    <artifactId>jetty-maven-plugin</artifactId>
-                    <version>${version.plugin.jetty}</version>
-                    <configuration>
-                        <scanIntervalSeconds>10</scanIntervalSeconds>
-                        <useTestScope>true</useTestScope>
-                        <webAppConfig>
-                            <defaultsDescriptor>src/test/resources/jetty-maven-plugin-webdefault.xml
-                            </defaultsDescriptor>
-                        </webAppConfig>
-                        <stopKey>stopJetty!</stopKey>
-                        <stopPort>8081</stopPort>
-                    </configuration>
-                </plugin>
+                -->
 
                 <plugin>
                     <groupId>org.jacoco</groupId>
@@ -443,6 +399,10 @@
         </pluginManagement>
 
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
@@ -654,29 +614,6 @@
                                 <include>**/*FT*.java</include>
                             </includes>
                         </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.eclipse.jetty</groupId>
-                        <artifactId>jetty-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>start-jetty</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>start</goal>
-                                </goals>
-                                <configuration>
-                                    <scanIntervalSeconds>0</scanIntervalSeconds>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>stop-jetty</id>
-                                <phase>post-integration-test</phase>
-                                <goals>
-                                    <goal>stop</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>

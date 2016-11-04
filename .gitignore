@@ -18,3 +18,4 @@ target
 /src/main/webapp/**/*.map
 /src/main/webapp/**/*.manifest
 
+/logs/

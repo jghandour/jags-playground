@@ -3,10 +3,7 @@ package com.jagsits;
 import com.jagsits.util.JagsObjectMapper;
 import org.springframework.beans.factory.config.PlaceholderConfigurerSupport;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableMBeanExport;
+import org.springframework.context.annotation.*;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.jmx.support.RegistrationPolicy;
@@ -26,6 +23,7 @@ import java.io.IOException;
 public class PlaygroundConfiguration {
 
     @Bean
+    @Primary
     JagsObjectMapper objectMapper() {
         return new JagsObjectMapper();
     }
