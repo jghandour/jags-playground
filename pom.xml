@@ -52,10 +52,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <!-- Testing -->
-        <skip.tests.unit>false</skip.tests.unit>
-        <skip.tests.integration>false</skip.tests.integration>
-
         <!-- Sonar / Jacoco -->
         <sonar.language>java</sonar.language>
         <sonar.host.url>http://localhost:9000</sonar.host.url>
@@ -234,13 +230,6 @@
                         </compilerArgs>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <configuration>
-                        <skipTests>${skip.tests.unit}</skipTests>
                     </configuration>
                 </plugin>
                 <plugin>
