@@ -52,12 +52,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <!-- Versioning -->
-        <!-- https://issues.apache.org/jira/browse/MRESOURCES-99 -->
-        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
-        <mvn.build.timestamp>${maven.build.timestamp}</mvn.build.timestamp>
-        <mvn.build.version>${project.version}</mvn.build.version>
-
         <!-- Testing -->
         <skip.tests.unit>false</skip.tests.unit>
         <skip.tests.integration>false</skip.tests.integration>
@@ -299,6 +293,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>com.github.eirslett</groupId>

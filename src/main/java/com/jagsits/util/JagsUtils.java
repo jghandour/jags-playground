@@ -1,5 +1,7 @@
 package com.jagsits.util;
 
+import org.apache.commons.lang3.time.FastDateFormat;
+
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.LinkedList;
@@ -10,6 +12,7 @@ public final class JagsUtils {
     public static final String LINE_SEPARATOR = System.lineSeparator();
     public static final String DEFAULT_CHAR_VALUE = "\0";
     public static final char URL_SEPARATOR = '/';
+    public static final FastDateFormat ISO_8601_FORMAT = FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ssZ");
 
     private JagsUtils() {
     }

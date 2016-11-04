@@ -1,11 +1,7 @@
 package com.jagsits;
 
 import com.jagsits.util.JagsObjectMapper;
-import org.springframework.beans.factory.config.PlaceholderConfigurerSupport;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.*;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.jmx.support.RegistrationPolicy;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,8 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.header.writers.ContentSecurityPolicyHeaderWriter;
-
-import java.io.IOException;
 
 @Configuration
 @ComponentScan("com.jagsits.service")
@@ -27,21 +21,6 @@ public class PlaygroundConfiguration {
     JagsObjectMapper objectMapper() {
         return new JagsObjectMapper();
     }
-
-    @Bean
-    public PlaceholderConfigurerSupport propertyConfigurer() throws IOException {
-        Resource[] resourceLocations = {
-                new ClassPathResource("build.properties"),
-        };
-
-        PropertyPlaceholderConfigurer result = new PropertyPlaceholderConfigurer();
-        result.setIgnoreUnresolvablePlaceholders(false);
-        result.setIgnoreResourceNotFound(true);
-        result.setSystemPropertiesMode(PropertyPlaceholderConfigurer.SYSTEM_PROPERTIES_MODE_OVERRIDE);
-        result.setLocations(resourceLocations);
-        return result;
-    }
-
 
     @Configuration
     @EnableWebSecurity
