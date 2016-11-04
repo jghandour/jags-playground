@@ -126,7 +126,6 @@ public class SudokuServiceTest extends BaseSpringTest {
     }
 
     protected void validateSolutions(SudokuSolverAlgorithm algorithm) {
-
         StopWatch stopWatch = new StopWatch();
         log.debug("Starting Algorithm: {}.", algorithm);
         stopWatch.start();

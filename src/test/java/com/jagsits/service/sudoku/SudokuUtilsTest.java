@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
+import static com.jagsits.util.JagsUtils.LINE_SEPARATOR;
 import static org.junit.Assert.*;
 
 public class SudokuUtilsTest {
@@ -44,16 +45,16 @@ public class SudokuUtilsTest {
 
     @Test
     public void testToPrettyString() {
-        String expected = System.lineSeparator() + "4 . . |. . . |8 . 5 " + System.lineSeparator() +
-                ". 3 . |. . . |. . . " + System.lineSeparator() +
-                ". . . |7 . . |. . . " + System.lineSeparator() +
-                "------+------+------" + System.lineSeparator() +
-                ". 2 . |. . . |. 6 . " + System.lineSeparator() +
-                ". . . |. 8 . |4 . . " + System.lineSeparator() +
-                ". . . |. 1 . |. . . " + System.lineSeparator() +
-                "------+------+------" + System.lineSeparator() +
-                ". . . |6 . 3 |. 7 . " + System.lineSeparator() +
-                "5 . . |2 . . |. . . " + System.lineSeparator() +
+        String expected = LINE_SEPARATOR + "4 . . |. . . |8 . 5 " + LINE_SEPARATOR +
+                ". 3 . |. . . |. . . " + LINE_SEPARATOR +
+                ". . . |7 . . |. . . " + LINE_SEPARATOR +
+                "------+------+------" + LINE_SEPARATOR +
+                ". 2 . |. . . |. 6 . " + LINE_SEPARATOR +
+                ". . . |. 8 . |4 . . " + LINE_SEPARATOR +
+                ". . . |. 1 . |. . . " + LINE_SEPARATOR +
+                "------+------+------" + LINE_SEPARATOR +
+                ". . . |6 . 3 |. 7 . " + LINE_SEPARATOR +
+                "5 . . |2 . . |. . . " + LINE_SEPARATOR +
                 "1 . 4 |. . . |. . . ";
         assertEquals(expected, SudokuUtils.toPrettyString(new SudokuBoard(SudokuBoardTest.BOARD_STRING_UNSOLVED)));
 
