@@ -18,7 +18,7 @@ import java.util.concurrent.*;
 @ManagedResource
 public class DefaultSudokuService extends BaseService implements SudokuService {
 
-    private NumberOfSolutionsSudokuSolver numberOfSolutionsSudokuSolver = SudokuSolverFactory.createNumberOfSolutionsSudokuSolver();
+    private final NumberOfSolutionsSudokuSolver numberOfSolutionsSudokuSolver = SudokuSolverFactory.createNumberOfSolutionsSudokuSolver();
 
     @Override
     public SudokuBoard createBoard(SudokuDifficultyLevel difficultyLevel) {
@@ -27,7 +27,7 @@ public class DefaultSudokuService extends BaseService implements SudokuService {
         LinkedList<SudokuCellValue> cellsRemoved;
         LinkedList<SudokuCellValue> cellValuesRemovable;
 
-        long attempts = 0;
+        long attempts = 1;
         do {
             log.trace("Attempting to generate a new random board for level: {}, attempt: {}.", difficultyLevel, attempts++);
             result = SudokuUtils.generateRandomSolvedSudokuBoard();
