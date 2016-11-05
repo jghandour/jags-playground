@@ -1,6 +1,8 @@
 package com.jagsits;
 
 import com.jagsits.util.JagsObjectMapper;
+import com.jagsits.util.JagsUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.*;
 import org.springframework.jmx.support.RegistrationPolicy;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -9,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.header.writers.ContentSecurityPolicyHeaderWriter;
+import org.springframework.security.web.header.writers.DelegatingRequestMatcherHeaderWriter;
 
 @Configuration
 @ComponentScan("com.jagsits.service")
@@ -26,6 +29,8 @@ public class PlaygroundConfiguration {
     @EnableWebSecurity
     class ApiSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+        private static final String ACTUATOR_ENDPOINT = JagsUtils.URL_SEPARATOR + "actuator";
+
         @Override
         public void configure(HttpSecurity http) throws Exception {
             http
@@ -36,7 +41,7 @@ public class PlaygroundConfiguration {
 
                     .and()
                     .headers()
-                    .addHeaderWriter(new ContentSecurityPolicyHeaderWriter("default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'unsafe-inline' 'self' data:; font-src 'self' data:;"))
+                    .addHeaderWriter(new DelegatingRequestMatcherHeaderWriter(request -> !StringUtils.startsWithIgnoreCase(request.getRequestURI(), ACTUATOR_ENDPOINT), new ContentSecurityPolicyHeaderWriter("default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'unsafe-inline' 'self' data:; font-src 'self' data:;")))
 
                     .and()
                     .httpBasic()
@@ -46,10 +51,7 @@ public class PlaygroundConfiguration {
 
                     .and()
                     .authorizeRequests()
-                    .antMatchers("*").permitAll()
-
-
-            ;
+                    .antMatchers("*").permitAll();
         }
 
     }
