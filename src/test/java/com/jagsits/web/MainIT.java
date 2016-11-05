@@ -1,14 +1,13 @@
 package com.jagsits.web;
 
 import com.jagsits.util.JagsUtils;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static com.jagsits.web.BaseController.RESPONSE_STATUS;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class MainIT extends BaseIT {
 
@@ -25,15 +24,10 @@ public class MainIT extends BaseIT {
         assertEquals(3, response.size());
     }
 
-    // FIXME
-    @Ignore
+    @Test
     public void test404() throws Exception {
-        try {
-            doGet("/INVALID_URL");
-            fail();
-        } catch (HttpClientErrorException hcee) {
-            assertEquals(HttpStatus.NOT_FOUND, hcee.getStatusCode());
-        }
+        Map map = doGet("/INVALID_URL");
+        assertEquals(map.get(RESPONSE_STATUS), 404);
     }
 
 }
