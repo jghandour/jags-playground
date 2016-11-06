@@ -1,6 +1,7 @@
 package com.jagsits;
 
-import com.jagsits.util.JagsObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jagsits.util.JagsObjectMapperHolder;
 import com.jagsits.util.JagsUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -25,8 +26,8 @@ public class PlaygroundConfiguration {
 
     @Bean
     @Primary
-    JagsObjectMapper objectMapper() {
-        return new JagsObjectMapper();
+    ObjectMapper objectMapper() {
+        return JagsObjectMapperHolder.INSTANCE;
     }
 
     @Bean

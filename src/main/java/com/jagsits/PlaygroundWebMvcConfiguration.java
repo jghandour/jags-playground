@@ -1,7 +1,6 @@
 package com.jagsits;
 
-import com.jagsits.util.JagsObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.jagsits.util.JagsObjectMapperHolder;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -16,9 +15,6 @@ import java.util.List;
 @ComponentScan("com.jagsits.web")
 public class PlaygroundWebMvcConfiguration extends WebMvcConfigurerAdapter {
 
-    @Autowired
-    private JagsObjectMapper objectMapper;
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("/");
@@ -26,7 +22,7 @@ public class PlaygroundWebMvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        new MappingJackson2HttpMessageConverter(objectMapper);
+        new MappingJackson2HttpMessageConverter(JagsObjectMapperHolder.INSTANCE);
     }
 
     @Override

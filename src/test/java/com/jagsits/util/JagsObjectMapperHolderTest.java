@@ -1,23 +1,14 @@
 package com.jagsits.util;
 
-import com.fasterxml.jackson.core.JsonEncoding;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jagsits.service.sudoku.*;
 import com.jagsits.service.sudoku.solver.SudokuSolverAlgorithm;
 import com.jagsits.service.version.VersionResponse;
-import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-
-import static com.jagsits.util.CharsetUtils.toUTF8;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class JagsObjectMapperTest {
-
-    private static ObjectMapper objectMapper = new JagsObjectMapper();
+public class JagsObjectMapperHolderTest {
 
     @Test
     public void testVersionResponse() {
@@ -54,42 +45,5 @@ public class JagsObjectMapperTest {
         SudokuResponse deserialized = JsonUtils.fromJson(serialized, SudokuResponse.class);
         assertEquals(original, deserialized);
     }
-
-    private static class JsonUtils {
-        public static <T> T fromJson(String jsonContent, Class<T> clazz) {
-            return fromJson(toUTF8(jsonContent), clazz);
-        }
-
-        private static <T> T fromJson(byte[] jsonContent, Class<T> clazz) {
-            T result = null;
-            if (ArrayUtils.isNotEmpty(jsonContent)) {
-                try {
-                    result = objectMapper.readValue(jsonContent, clazz);
-                } catch (Exception e) {
-                    throw new RuntimeException("Error converting from JSON!", e);
-                }
-            }
-            return result;
-        }
-
-        public static String toJsonString(Object object) {
-            return toUTF8(toJsonBytes(object, objectMapper));
-        }
-
-        private static byte[] toJsonBytes(Object object, ObjectMapper objectMapper) {
-            byte[] result = null;
-            try {
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                JsonGenerator generator = objectMapper.getFactory().createGenerator(outputStream, JsonEncoding.UTF8);
-                objectMapper.writeValue(generator, object);
-                result = outputStream.toByteArray();
-            } catch (Exception e) {
-                throw new RuntimeException("Error converting to JSON!", e);
-            }
-            return result;
-        }
-
-    }
-
 
 }
