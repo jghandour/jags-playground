@@ -3,6 +3,7 @@ package com.jagsits;
 import com.jagsits.util.JagsObjectMapper;
 import com.jagsits.util.JagsUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.*;
 import org.springframework.jmx.support.RegistrationPolicy;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -12,6 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.header.writers.ContentSecurityPolicyHeaderWriter;
 import org.springframework.security.web.header.writers.DelegatingRequestMatcherHeaderWriter;
+import org.springframework.web.filter.CharacterEncodingFilter;
+
+import java.nio.charset.StandardCharsets;
 
 @Configuration
 @ComponentScan("com.jagsits.service")
@@ -23,6 +27,15 @@ public class PlaygroundConfiguration {
     @Primary
     JagsObjectMapper objectMapper() {
         return new JagsObjectMapper();
+    }
+
+    @Bean
+    FilterRegistrationBean characterEncodingFilter() {
+        FilterRegistrationBean result = new FilterRegistrationBean();
+        result.setFilter(new CharacterEncodingFilter(StandardCharsets.UTF_8.name(), true));
+        result.addUrlPatterns("/*");
+        result.setOrder(1);
+        return result;
     }
 
     @Configuration
