@@ -2,8 +2,8 @@ package com.jagsits;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jagsits.util.JagsObjectMapperHolder;
-import com.jagsits.util.JagsUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.*;
 import org.springframework.jmx.support.RegistrationPolicy;
@@ -43,7 +43,8 @@ public class PlaygroundConfiguration {
     @EnableWebSecurity
     class ApiSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-        private static final String ACTUATOR_ENDPOINT = JagsUtils.URL_SEPARATOR + "actuator";
+        @Value("${management.context-path}")
+        private String managementBaseContextPath;
 
         @Override
         public void configure(HttpSecurity http) throws Exception {
@@ -55,7 +56,7 @@ public class PlaygroundConfiguration {
 
                     .and()
                     .headers()
-                    .addHeaderWriter(new DelegatingRequestMatcherHeaderWriter(request -> !StringUtils.startsWithIgnoreCase(request.getRequestURI(), ACTUATOR_ENDPOINT), new ContentSecurityPolicyHeaderWriter("default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'unsafe-inline' 'self' data:; font-src 'self' data:;")))
+                    .addHeaderWriter(new DelegatingRequestMatcherHeaderWriter(request -> !StringUtils.startsWithIgnoreCase(request.getRequestURI(), managementBaseContextPath), new ContentSecurityPolicyHeaderWriter("default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'unsafe-inline' 'self' data:; font-src 'self' data:;")))
 
                     .and()
                     .httpBasic()
