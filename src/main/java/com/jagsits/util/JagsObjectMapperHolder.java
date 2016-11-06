@@ -7,25 +7,31 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 
-public class JagsObjectMapperHolder {
+public final class JagsObjectMapperHolder {
 
-    public static final ObjectMapper INSTANCE;
+    private static final ObjectMapper INSTANCE;
 
     static {
         INSTANCE = new ObjectMapper();
 
         // Pretty Print
-        INSTANCE.configure(SerializationFeature.INDENT_OUTPUT, true);
+        getInstance().configure(SerializationFeature.INDENT_OUTPUT, true);
 
         // Do not write Null's
-        INSTANCE.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
-        INSTANCE.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        getInstance().configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
+        getInstance().setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
         // Handle JDK8
-        INSTANCE.registerModule(new Jdk8Module());
+        getInstance().registerModule(new Jdk8Module());
 
         // Handle Parameter names
-        INSTANCE.registerModule(new ParameterNamesModule(JsonCreator.Mode.PROPERTIES));
+        getInstance().registerModule(new ParameterNamesModule(JsonCreator.Mode.PROPERTIES));
     }
 
+    private JagsObjectMapperHolder() {
+    }
+
+    public static ObjectMapper getInstance() {
+        return INSTANCE;
+    }
 }

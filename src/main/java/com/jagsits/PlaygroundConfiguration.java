@@ -3,7 +3,6 @@ package com.jagsits;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jagsits.util.JagsObjectMapperHolder;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.*;
 import org.springframework.jmx.support.RegistrationPolicy;
@@ -27,7 +26,7 @@ public class PlaygroundConfiguration {
     @Bean
     @Primary
     ObjectMapper objectMapper() {
-        return JagsObjectMapperHolder.INSTANCE;
+        return JagsObjectMapperHolder.getInstance();
     }
 
     @Bean
@@ -43,8 +42,7 @@ public class PlaygroundConfiguration {
     @EnableWebSecurity
     class ApiSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-        @Value("${management.context-path}")
-        private String managementBaseContextPath;
+        private static final String MANAGEMENT_BASE_CONTEXT_PATH = "/management";
 
         @Override
         public void configure(HttpSecurity http) throws Exception {
@@ -56,7 +54,7 @@ public class PlaygroundConfiguration {
 
                     .and()
                     .headers()
-                    .addHeaderWriter(new DelegatingRequestMatcherHeaderWriter(request -> !StringUtils.startsWithIgnoreCase(request.getRequestURI(), managementBaseContextPath), new ContentSecurityPolicyHeaderWriter("default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'unsafe-inline' 'self' data:; font-src 'self' data:;")))
+                    .addHeaderWriter(new DelegatingRequestMatcherHeaderWriter(request -> !StringUtils.startsWithIgnoreCase(request.getRequestURI(), MANAGEMENT_BASE_CONTEXT_PATH), new ContentSecurityPolicyHeaderWriter("default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'unsafe-inline' 'self' data:; font-src 'self' data:;")))
 
                     .and()
                     .httpBasic()

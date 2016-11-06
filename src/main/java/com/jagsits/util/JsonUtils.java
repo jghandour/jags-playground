@@ -11,7 +11,7 @@ import static com.jagsits.util.CharsetUtils.toUTF8;
 public final class JsonUtils {
     private static final Logger log = LoggerFactory.getLogger(JsonUtils.class);
 
-    private static final ObjectMapper OBJECT_MAPPER = JagsObjectMapperHolder.INSTANCE;
+    private static final ObjectMapper OBJECT_MAPPER = JagsObjectMapperHolder.getInstance();
 
     private JsonUtils() {
     }

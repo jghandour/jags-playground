@@ -22,7 +22,7 @@ public class PlaygroundWebMvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        new MappingJackson2HttpMessageConverter(JagsObjectMapperHolder.INSTANCE);
+        new MappingJackson2HttpMessageConverter(JagsObjectMapperHolder.getInstance());
     }
 
     @Override
