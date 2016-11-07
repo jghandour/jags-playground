@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jagsits.util.JagsObjectMapperHolder;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.*;
 import org.springframework.jmx.support.RegistrationPolicy;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,6 +20,7 @@ import java.nio.charset.StandardCharsets;
 
 @Configuration
 @ComponentScan("com.jagsits.service")
+@EnableCaching
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableMBeanExport(defaultDomain = "com.jagsits.service", registration = RegistrationPolicy.IGNORE_EXISTING)
 public class PlaygroundConfiguration {
