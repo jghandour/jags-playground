@@ -3,7 +3,6 @@ target
 
 # IntelliJ
 .idea
-*.iml
 
 # Sonar
 .sonar
@@ -18,4 +17,5 @@ target
 /src/main/webapp/**/*.map
 /src/main/webapp/**/*.manifest
 
+# Misc
 /logs/
