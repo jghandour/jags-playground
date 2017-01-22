@@ -63,7 +63,7 @@
         <commons-collections4.version>4.1</commons-collections4.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <jacoco.listeners.version>4.3.0.7717</jacoco.listeners.version>
+        <jacoco.listeners.version>4.4.0.8066</jacoco.listeners.version>
         <javax-validation.version>1.1.0.Final</javax-validation.version>
     </properties>
 
