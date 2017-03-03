@@ -2,7 +2,6 @@ package com.jagsits;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jagsits.util.JagsObjectMapperHolder;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.*;
@@ -17,6 +16,8 @@ import org.springframework.security.web.header.writers.DelegatingRequestMatcherH
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 import java.nio.charset.StandardCharsets;
+
+import static org.apache.commons.lang3.StringUtils.startsWithIgnoreCase;
 
 @Configuration
 @ComponentScan("com.jagsits.service")
@@ -56,7 +57,7 @@ public class PlaygroundConfiguration {
 
                     .and()
                     .headers()
-                    .addHeaderWriter(new DelegatingRequestMatcherHeaderWriter(request -> !StringUtils.startsWithIgnoreCase(request.getRequestURI(), MANAGEMENT_BASE_CONTEXT_PATH), new ContentSecurityPolicyHeaderWriter("default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'unsafe-inline' 'self' data:; font-src 'self' data:;")))
+                    .addHeaderWriter(new DelegatingRequestMatcherHeaderWriter(request -> !startsWithIgnoreCase(request.getRequestURI(), MANAGEMENT_BASE_CONTEXT_PATH), new ContentSecurityPolicyHeaderWriter("default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'unsafe-inline' 'self' data:; font-src 'self' data:;")))
 
                     .and()
                     .httpBasic()

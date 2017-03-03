@@ -10,17 +10,17 @@
     "gulp-appcache": "^0.0.4",
     "gulp-cli": "^1.2.2",
     "gulp-concat": "^2.6.1",
-    "gulp-uglify": "^2.0.0",
+    "gulp-uglify": "^2.0.1",
     "gulp-uglifycss": "^1.0.6",
-    "gulp-sourcemaps": "^2.4.0",
-    "npm-check-updates": "^2.8.9"
+    "gulp-sourcemaps": "^2.4.1",
+    "npm-check-updates": "^2.10.3"
   },
   "dependencies": {
-    "angular": "^1.6.1",
-    "angular-animate": "^1.6.1",
-    "angular-route": "^1.6.1",
+    "angular": "^1.6.2",
+    "angular-animate": "^1.6.2",
+    "angular-route": "^1.6.2",
     "angular-loading-bar": "^0.9.0",
-    "angular-ui-bootstrap": "^2.4.0",
+    "angular-ui-bootstrap": "^2.5.0",
     "jquery": "^2.2.4",
     "bootstrap": "^3.3.7"
   },
