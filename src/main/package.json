@@ -12,13 +12,13 @@
     "gulp-concat": "^2.6.1",
     "gulp-uglify": "^2.1.2",
     "gulp-uglifycss": "^1.0.8",
-    "gulp-sourcemaps": "^2.5.0",
-    "npm-check-updates": "^2.10.4"
+    "gulp-sourcemaps": "^2.6.0",
+    "npm-check-updates": "^2.11.0"
   },
   "dependencies": {
-    "angular": "^1.6.3",
-    "angular-animate": "^1.6.3",
-    "angular-route": "^1.6.3",
+    "angular": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "angular-route": "^1.6.4",
     "angular-loading-bar": "^0.9.0",
     "angular-ui-bootstrap": "^2.5.0",
     "jquery": "^2.2.4",
