@@ -25,7 +25,7 @@ app.controller("SudokuCtrl", ["ApiService", "$scope", function (ApiService, $sco
                 $scope.algorithms.unshift("ANY");
             }
         });
-    }
+    };
     $scope.getAlgorithms();
 
     $scope.getDifficultyLevels = function (algorithm, board) {
@@ -35,7 +35,7 @@ app.controller("SudokuCtrl", ["ApiService", "$scope", function (ApiService, $sco
                 $scope.difficultyLevel = $scope.difficultyLevels[2];
             }
         });
-    }
+    };
     $scope.getDifficultyLevels();
 
     $scope.random = function (difficultyLevel) {
@@ -45,11 +45,11 @@ app.controller("SudokuCtrl", ["ApiService", "$scope", function (ApiService, $sco
                 $scope.board = data.result;
             }
         });
-    }
+    };
 
     $scope.getRandom = function () {
         $scope.random($scope.difficultyLevel);
-    }
+    };
 
     $scope.solve = function (algorithm, board) {
         $scope.solvedBoard = null;
@@ -64,11 +64,11 @@ app.controller("SudokuCtrl", ["ApiService", "$scope", function (ApiService, $sco
                 $scope.solvedDifficultyLevel = data.result.difficultyLevel;
             }
         });
-    }
+    };
 
     $scope.getSolution = function () {
         $scope.solve($scope.algorithm, $scope.board);
-    }
+    };
 
     $scope.isBoardValid = function () {
         return $scope.board != null && $scope.board.length == 81;

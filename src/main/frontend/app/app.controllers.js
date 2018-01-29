@@ -15,7 +15,7 @@ app.controller("AppCtrl", ["ApiService", "$rootScope", "$http", function (ApiSer
             // Set CSRF Http Header
             $http.defaults.headers.common[$rootScope.csrf.headerName] = $rootScope.csrf.token;
         });
-    }
+    };
 
     $rootScope.getVersion = function () {
         $rootScope.version = null;
@@ -23,7 +23,7 @@ app.controller("AppCtrl", ["ApiService", "$rootScope", "$http", function (ApiSer
             $rootScope.version = data.result;
             console.log("Received Version: " + $rootScope.version);
         });
-    }
+    };
 
     $rootScope.getCsrf();
     $rootScope.getVersion();
