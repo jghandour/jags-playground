@@ -46,20 +46,20 @@ public class SudokuIT extends BaseIT {
     }
 
     @Test
-    public void testRandom() throws Exception {
+    public void testRandom() {
         String result = getResultString(doGet(buildPathSuffix(SudokuController.MAPPING, SudokuController.MAPPING_RANDOM)));
         assertNotNull(result);
     }
 
     @Test
-    public void testAlgorithms() throws Exception {
+    public void testAlgorithms() {
         List result = getResultList(doGet(buildPathSuffix(SudokuController.MAPPING, SudokuController.MAPPING_ALGORITHMS)));
         assertNotNull(result);
         assertEquals(SudokuSolverAlgorithm.values().length, result.size());
     }
 
     @Test
-    public void testDifficultyLevels() throws Exception {
+    public void testDifficultyLevels() {
         List result = getResultList(doGet(buildPathSuffix(SudokuController.MAPPING, SudokuController.MAPPING_DIFFICULTY)));
         assertNotNull(result);
         assertEquals(SudokuDifficultyLevel.values().length, result.size());

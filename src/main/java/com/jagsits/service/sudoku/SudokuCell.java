@@ -5,8 +5,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class SudokuCell {
 
-    private int r;
-    private int c;
+    private final int r;
+    private final int c;
 
     public SudokuCell(int r, int c) {
         this.r = r;

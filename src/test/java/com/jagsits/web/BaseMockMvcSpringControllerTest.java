@@ -21,7 +21,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-@ContextConfiguration(classes = {PlaygroundWebMvcConfiguration.class})
+@ContextConfiguration(classes = PlaygroundWebMvcConfiguration.class)
 public abstract class BaseMockMvcSpringControllerTest extends BaseSpringTest {
 
     private static final String EXPECTED_CONTENT_TYPE = MediaType.APPLICATION_JSON_UTF8_VALUE;

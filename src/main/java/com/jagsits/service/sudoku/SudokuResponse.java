@@ -6,10 +6,10 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class SudokuResponse {
 
-    private SudokuBoard sudokuBoard;
-    private SudokuSolverAlgorithm sudokuSolverAlgorithm;
-    private SudokuDifficultyLevel sudokuDifficultyLevel;
-    private Long time;
+    private final SudokuBoard sudokuBoard;
+    private final SudokuSolverAlgorithm sudokuSolverAlgorithm;
+    private final SudokuDifficultyLevel sudokuDifficultyLevel;
+    private final Long time;
 
     public SudokuResponse(SudokuBoard sudokuBoard, SudokuSolverAlgorithm sudokuSolverAlgorithm, SudokuDifficultyLevel sudokuDifficultyLevel, Long time) {
         this.sudokuBoard = sudokuBoard;

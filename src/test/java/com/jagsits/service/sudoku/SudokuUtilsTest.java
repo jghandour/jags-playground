@@ -38,9 +38,9 @@ public class SudokuUtilsTest {
     public void testValidValues() {
         SudokuBoard board = new SudokuBoard(SudokuBoardTest.BOARD_STRING_UNSOLVED);
         SudokuCell cell = new SudokuCell(4, 5);
-        assertEquals(Arrays.asList(new Integer[]{2, 5, 6, 7, 9}), SudokuUtils.getValidValues(board, cell));
+        assertEquals(Arrays.asList(2, 5, 6, 7, 9), SudokuUtils.getValidValues(board, cell));
         board.setCellValue(4, 7, 7);
-        assertEquals(Arrays.asList(new Integer[]{2, 5, 6, 9}), SudokuUtils.getValidValues(board, cell));
+        assertEquals(Arrays.asList(2, 5, 6, 9), SudokuUtils.getValidValues(board, cell));
     }
 
     @Test

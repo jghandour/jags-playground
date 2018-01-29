@@ -43,7 +43,7 @@ public final class SudokuUtils {
         int[][] result = new int[BOARD_DIMENSION][BOARD_DIMENSION];
         for (int r = 0; r < BOARD_DIMENSION; r++) {
             for (int c = 0; c < BOARD_DIMENSION; c++) {
-                int index = (r * SUB_BOARD_DIMENSION + r / SUB_BOARD_DIMENSION + c) % (BOARD_DIMENSION);
+                int index = (r * SUB_BOARD_DIMENSION + r / SUB_BOARD_DIMENSION + c) % BOARD_DIMENSION;
                 result[r][c] = values[index];
             }
         }
@@ -76,7 +76,7 @@ public final class SudokuUtils {
                 int lastGroup = random.nextInt(SUB_BOARD_DIMENSION);
                 if (firstGroup != lastGroup) {
                     for (int j = 0; j < SUB_BOARD_DIMENSION; j++) {
-                        swapRows(cells, (firstGroup * SUB_BOARD_DIMENSION) + j, (lastGroup * SUB_BOARD_DIMENSION) + j);
+                        swapRows(cells, firstGroup * SUB_BOARD_DIMENSION + j, lastGroup * SUB_BOARD_DIMENSION + j);
                     }
                 }
             }
@@ -161,7 +161,7 @@ public final class SudokuUtils {
         for (int r = 0; r < BOARD_DIMENSION; r++) {
             for (int c = 0; c < BOARD_DIMENSION; c++) {
 
-                if (c == 0 && r != 0 && (r % SUB_BOARD_DIMENSION) == 0) {
+                if (c == 0 && r != 0 && r % SUB_BOARD_DIMENSION == 0) {
                     String repeatedString = StringUtils.repeat("-", SUB_BOARD_DIMENSION * 2);
                     result.append(JagsUtils.LINE_SEPARATOR);
                     result.append(repeatedString).append("+");

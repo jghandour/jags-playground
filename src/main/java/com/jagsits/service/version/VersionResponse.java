@@ -5,8 +5,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class VersionResponse {
 
-    private String version;
-    private String buildTimestamp;
+    private final String version;
+    private final String buildTimestamp;
 
     public VersionResponse(String version, String buildTimestamp) {
         this.version = version;

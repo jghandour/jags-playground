@@ -21,7 +21,7 @@ public class SudokuServiceTest extends BaseSpringTest {
     @Autowired
     private DefaultSudokuService service;
 
-    private static Map<String, String> solutionMap = new HashMap<>();
+    private static final Map<String, String> solutionMap = new HashMap<>();
 
     @BeforeClass
     public static void setup() {

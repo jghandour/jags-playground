@@ -5,8 +5,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 class SudokuCellValue {
-    private SudokuCell sudokuCell;
-    private int value;
+    private final SudokuCell sudokuCell;
+    private final int value;
 
     public SudokuCellValue(SudokuCell sudokuCell, int value) {
         this.sudokuCell = sudokuCell;

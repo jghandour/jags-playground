@@ -52,12 +52,12 @@ public final class DancingLinks<ColumnName> {
      * The head of the table. Left/Right from the head are the unsatisfied
      * ColumnHeader objects.
      */
-    private ColumnHeader<ColumnName> head;
+    private final ColumnHeader<ColumnName> head;
 
     /**
      * The complete list of columns.
      */
-    private List<ColumnHeader<ColumnName>> columns;
+    private final List<ColumnHeader<ColumnName>> columns;
 
     public DancingLinks() {
         head = new ColumnHeader<>(null, 0);

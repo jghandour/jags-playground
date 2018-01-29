@@ -25,7 +25,7 @@ public class MainIT extends BaseIT {
     }
 
     @Test
-    public void test404() throws Exception {
+    public void test404() {
         Map map = doGet("/INVALID_URL");
         assertEquals(map.get(RESPONSE_STATUS), 404);
     }

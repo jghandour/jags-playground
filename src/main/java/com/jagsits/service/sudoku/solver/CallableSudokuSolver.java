@@ -8,9 +8,9 @@ import java.util.concurrent.Callable;
 
 public class CallableSudokuSolver implements Callable<SudokuResponse> {
 
-    private SudokuSolver solver;
-    private SudokuBoard board;
-    private SudokuDifficultyLevel level;
+    private final SudokuSolver solver;
+    private final SudokuBoard board;
+    private final SudokuDifficultyLevel level;
 
     public CallableSudokuSolver(SudokuSolver solver, SudokuBoard board, SudokuDifficultyLevel level) {
         this.solver = solver;
@@ -19,7 +19,7 @@ public class CallableSudokuSolver implements Callable<SudokuResponse> {
     }
 
     @Override
-    public SudokuResponse call() throws Exception {
+    public SudokuResponse call() {
         SudokuBoard solvedBoard = solver.solve(board);
         return new SudokuResponse(solvedBoard, solver.getAlgorithm(), level, 0L);
     }
