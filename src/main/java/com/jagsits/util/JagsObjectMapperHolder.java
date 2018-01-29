@@ -1,11 +1,13 @@
 package com.jagsits.util;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
+
+import static com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import static com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public final class JagsObjectMapperHolder {
 
@@ -18,14 +20,15 @@ public final class JagsObjectMapperHolder {
         getInstance().configure(SerializationFeature.INDENT_OUTPUT, true);
 
         // Do not write Null's
-        getInstance().configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
-        getInstance().setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        getInstance().setSerializationInclusion(Include.NON_EMPTY);
+        getInstance().setSerializationInclusion(Include.NON_NULL);
 
         // Handle JDK8
         getInstance().registerModule(new Jdk8Module());
+        getInstance().registerModule(new JavaTimeModule());
 
         // Handle Parameter names
-        getInstance().registerModule(new ParameterNamesModule(JsonCreator.Mode.PROPERTIES));
+        getInstance().registerModule(new ParameterNamesModule(Mode.PROPERTIES));
     }
 
     private JagsObjectMapperHolder() {

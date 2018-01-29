@@ -1,6 +1,5 @@
 package com.jagsits.service.sudoku;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -28,7 +27,6 @@ public class SudokuBoard {
         this.cells = values;
     }
 
-    @JsonCreator
     public SudokuBoard(String values) {
         assert values != null && values.length() == BOARD_CELL_COUNT;
         for (int i = 0; i < BOARD_CELL_COUNT; i++) {
